@@ -59,7 +59,7 @@
         ```php
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2025_advanced',
+            'dsn' => 'mysql:host=localhost;dbname=yii2025_advanced', // 替换成你自己起的数据库名
             'username' => 'root', // 你的数据库用户名
             'password' => '', // 你的数据库密码
             'charset' => 'utf8',

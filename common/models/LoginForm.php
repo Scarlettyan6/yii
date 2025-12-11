@@ -42,6 +42,15 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
+            
+            // Debug logging
+            \Yii::info("LoginForm validatePassword - username: {$this->username}, user found: " . ($user ? 'YES' : 'NO'), __METHOD__);
+            if ($user) {
+                \Yii::info("LoginForm validatePassword - user id: {$user->id}, status: {$user->status}, password_hash: " . substr($user->password_hash, 0, 20) . '...', __METHOD__);
+                $passwordValid = $user->validatePassword($this->password);
+                \Yii::info("LoginForm validatePassword - password valid: " . ($passwordValid ? 'YES' : 'NO'), __METHOD__);
+            }
+            
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }

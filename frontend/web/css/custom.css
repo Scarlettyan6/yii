@@ -1,0 +1,64 @@
+/* 人物卡片固定尺寸及图片裁剪 */
+.figure-card-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.figure-card {
+    flex: 1;
+    height: 360px; /* 固定整体高度，统一卡片尺寸 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.figure-card__img {
+    width: 100%;
+    height: 220px; /* 固定图片展示高度，可按需求微调 */
+    object-fit: cover;
+}
+
+.figure-card .caption {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.figure-card__title {
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 影视卡片统一尺寸与标题高度 */
+.media-index .thumbnail.media-card {
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+    overflow: hidden;
+}
+
+.media-card__img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.media-card .caption {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.media-card__title {
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
