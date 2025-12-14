@@ -37,6 +37,7 @@ use common\models\GuestbookMessage;
  */
 class SiteController extends Controller
 {
+    
     /**
      * {@inheritdoc}
      * (你的 behaviors() 函数从这里开始)

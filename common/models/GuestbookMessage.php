@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "guestbook_message".
@@ -19,6 +20,15 @@ class GuestbookMessage extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
+    }
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
         return 'guestbook_message';
@@ -30,10 +40,11 @@ class GuestbookMessage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'created_at', 'updated_at'], 'required'],
+            [['content'], 'required'],
             [['content'], 'string'],
-            [['is_approved', 'created_at', 'updated_at'], 'integer'],
             [['nickname'], 'string', 'max' => 100],
+            [['is_approved'], 'boolean'],
+            [['created_at', 'updated_at'], 'integer'],
         ];
     }
 
