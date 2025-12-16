@@ -20,7 +20,9 @@ $pagination = $dataProvider->getPagination();
                     $imageUrl = $figure->cover_image_url ?: 'https://via.placeholder.com/300x300?text=Figure';
                     ?>
                     <a href="<?= Html::encode(\yii\helpers\Url::to(['view', 'id' => $figure->id])) ?>">
-                        <img src="<?= Html::encode($imageUrl) ?>" alt="<?= Html::encode($figure->name) ?>" class="img-responsive figure-card__img">
+                        <div class="figure-card__img-wrap">
+                            <img src="<?= Html::encode($imageUrl) ?>" alt="<?= Html::encode($figure->name) ?>" class="img-responsive figure-card__img">
+                        </div>
                     </a>
                     <div class="caption">
                         <h4 class="figure-card__title"><?= Html::encode($figure->name) ?></h4>

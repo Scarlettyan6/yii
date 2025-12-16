@@ -37,7 +37,9 @@ $pagination = $dataProvider->getPagination();
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail text-center media-card">
                         <a href="<?= Html::encode(\yii\helpers\Url::to(['view', 'id' => $media->id])) ?>">
-                            <img src="<?= Html::encode($media->getCoverUrl()) ?>" alt="<?= Html::encode($media->title) ?>" class="img-responsive media-card__img">
+                            <div class="media-card__img-wrap">
+                                <img src="<?= Html::encode($media->getCoverUrl()) ?>" alt="<?= Html::encode($media->title) ?>" class="img-responsive media-card__img">
+                            </div>
                         </a>
                         <div class="caption">
                             <h4 class="media-card__title"><?= Html::encode($media->title) ?></h4>

@@ -1,4 +1,4 @@
-/* 人物卡片固定尺寸及图片裁剪 */
+﻿/* 人物卡片统一尺寸与图片裁剪 */
 .figure-card-wrapper {
     display: flex;
     height: 100%;
@@ -6,24 +6,34 @@
 
 .figure-card {
     flex: 1;
-    height: 360px; /* 固定整体高度，统一卡片尺寸 */
+    height: 360px; /* 整体固定高度，可按需调整 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow: hidden;
 }
 
-.figure-card__img {
+.figure-card__img-wrap {
     width: 100%;
-    height: 220px; /* 固定图片展示高度，可按需求微调 */
+    height: 300px; /* 固定图片展示高度，可按需调整 */
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.figure-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .figure-card .caption {
-    flex: 1;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 4px; /* 控制标题与按钮距离 */
+    align-items: center;
 }
 
 .figure-card__title {
@@ -38,17 +48,26 @@
 .media-index .thumbnail.media-card {
     display: flex;
     flex-direction: column;
-    height: 360px;
+    height: 400px;
     overflow: hidden;
+}
+
+.media-card__img-wrap {
+    width: 100%;
+    height: 280px; /* 固定图片展示高度，可按需调整 */
+    overflow: hidden;
+    flex: 0 0 auto;
 }
 
 .media-card__img {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .media-card .caption {
+    margin-top: 2px;
     flex: 1;
     display: flex;
     flex-direction: column;

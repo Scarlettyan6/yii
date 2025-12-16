@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use common\models\Figure;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "media_resource".
@@ -110,12 +111,16 @@ class MediaResource extends \yii\db\ActiveRecord
      */
     public function getCoverUrl(): string
     {
-        if (!empty($this->url)) {
-            return $this->url;
-        }
+        // 优先使用 path 作为封面（建议存封面图）
         if (!empty($this->path)) {
-            return $this->path;
+            return $this->normalizeUrl($this->path);
         }
+
+        // 其次使用 url（如果填的是图片链接也可用）
+        if (!empty($this->url)) {
+            return $this->normalizeUrl($this->url);
+        }
+
         return 'https://via.placeholder.com/400x600?text=Media';
     }
 
@@ -128,5 +133,20 @@ class MediaResource extends \yii\db\ActiveRecord
             return Figure::findOne($this->linkable_id);
         }
         return null;
+    }
+
+    /**
+     * 规范化为可访问的 URL：
+     * - 已包含 http/https 直接返回
+     * - 其他视为相对路径，自动补全域名和 @web 前缀
+     */
+    protected function normalizeUrl(string $path): string
+    {
+        if (preg_match('#^https?://#i', $path)) {
+            return $path;
+        }
+
+        $relative = ltrim($path, '/');
+        return Url::to('@web/' . $relative, true);
     }
 }
