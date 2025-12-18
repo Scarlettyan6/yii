@@ -75,12 +75,18 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'team' => [
-                'class' => 'yii\web\ViewAction',
-            ],
+  
         ];
     }
-
+/**
+     * Displays team page.
+     *
+     * @return mixed
+     */
+    public function actionTeam()
+    {
+        return $this->render('team');
+    }
     /**
      * Displays homepage.
      *
