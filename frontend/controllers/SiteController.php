@@ -1,9 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-// 
-// --- 所有的 USE 语句都必须在这里 ---
-// 
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -11,26 +8,22 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-// Yii 默认的模型
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\VerifyEmailForm;
+use frontend\models\ResendVerificationEmailForm;
 
-//
-// --- 这是你为首页新加的 USE 语句 ---
-//
 use common\models\TimelineEvent;
 use common\models\Battle;
 use common\models\Statistic;
-use common\models\StatisticCategory; // <-- 我帮你补上了这个
+use common\models\StatisticCategory;
 use common\models\Figure;
 use common\models\MediaResource;
 use common\models\GuestbookMessage;
-// 
-// --- USE 语句结束 ---
-//
+use common\models\HomepageFeature;
 
 /**
  * Site controller
@@ -39,13 +32,12 @@ class SiteController extends Controller
 {
     /**
      * {@inheritdoc}
-     * (你的 behaviors() 函数从这里开始)
      */
     public function behaviors()
     {
         return [
             'access' => [
-                'class' => AccessControl::class, // <-- 我帮你修正了这里
+                'class' => AccessControl::class,
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
@@ -61,13 +53,14 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::class, // <-- 我帮你修正了这里
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
             ],
         ];
     }
+
     /**
      * {@inheritdoc}
      */
@@ -81,9 +74,9 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'team' => [ // <-- 把这个添加进去 
+            'team' => [
                 'class' => 'yii\web\ViewAction',
-            ], 
+            ],
         ];
     }
 
@@ -92,59 +85,71 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    public function actionIndex()
+    {
+        // 1. 时间轴精选
+        $featuredEvents = TimelineEvent::find()
+            ->orderBy(['importance' => SORT_DESC, 'event_date' => SORT_DESC])
+            ->limit(3)
+            ->all();
 
-public function actionIndex() 
-{ 
-    // 1. 获取“时间戳”精华 (比如：最重要的3个事件) 
-    $featuredEvents = TimelineEvent::find() 
-        ->orderBy(['importance' => SORT_DESC, 'event_date' => SORT_DESC]) 
-        ->limit(3) 
-        ->all(); 
+        // 2. 战役地标（用于地图）
+        $battlesForMap = Battle::find()
+            ->select([
+                'name',
+                'main_location',
+                'start_date',
+                'end_date',
+                'description',
+                'main_latitude',
+                'main_longitude',
+            ])
+            ->asArray()
+            ->all();
 
-    // 2. 获取“战役地标” (用于地图) 
-    // (我们获取所有战役的坐标和名称) 
-    $battlesForMap = Battle::find() 
-        ->select(['name', 'main_latitude', 'main_longitude']) 
-        ->asArray() // 转换成数组，方便 ECharts/Three.js 使用 
-        ->all(); 
+        // 3. 抗战数据
+        $keyStats = Statistic::find()
+            ->where(['category_id' => 1])
+            ->orderBy(['display_order' => SORT_ASC])
+            ->all();
 
-    // 3. 获取“抗战数据” (比如：最重要的统计数据，如"伤亡") 
-    $keyStats = Statistic::find() 
-        ->where(['category_id' => 1]) // 假设 1 是“伤亡统计”类别 
-        ->orderBy(['display_order' => SORT_ASC]) 
-        ->all(); 
+        // 4. 人物专栏
+        $featuredFigures = Figure::find()
+            ->orderBy('RAND()')
+            ->limit(6)
+            ->all();
 
-    // 4. 获取“人物专栏”精华 (比如：随机6位人物) 
-    $featuredFigures = Figure::find() 
-        ->orderBy('RAND()') // 随机获取 
-        ->limit(6) 
-        ->all(); 
+        // 5. 影视信息
+        $featuredMedia = MediaResource::find()
+            ->where(['type' => 4])
+            ->orderBy(['id' => SORT_DESC])
+            ->limit(4)
+            ->all();
 
-    // 5. 获取“影视信息”精华 (比如：最新的4个) 
-    $featuredMedia = MediaResource::find() 
-        ->where(['type' => 4]) // 4 = Movie 
-        ->orderBy(['id' => SORT_DESC]) // 假设按ID倒序 
-        ->limit(4) 
-        ->all(); 
+        // 6. 留言板精选
+        $featuredMessages = GuestbookMessage::find()
+            ->where(['is_approved' => true])
+            ->orderBy(['created_at' => SORT_DESC])
+            ->limit(3)
+            ->all();
 
-    // 6. 获取“留言板”精华 (比如：最新的3条已审核留言) 
-    $featuredMessages = GuestbookMessage::find() 
-        ->where(['is_approved' => true]) 
-        ->orderBy(['created_at' => SORT_DESC]) 
-        ->limit(3) 
-        ->all(); 
+        // 7. 专题首页内容
+        $homepageFeatures = HomepageFeature::find()
+            ->where(['is_active' => true])
+            ->orderBy(['display_order' => SORT_ASC, 'id' => SORT_DESC])
+            ->all();
 
-    // 7. 把所有数据打包，发送给视图 
-    return $this->render('index', [ 
-        'featuredEvents' => $featuredEvents, 
-        'battlesForMap' => $battlesForMap, 
-        'keyStats' => $keyStats, 
-        'featuredFigures' => $featuredFigures, 
-        'featuredMedia' => $featuredMedia, 
-        'featuredMessages' => $featuredMessages, 
-    ]); 
-}
-
+        // 8. 渲染视图
+        return $this->render('index', [
+            'featuredEvents' => $featuredEvents,
+            'battlesForMap' => $battlesForMap,
+            'keyStats' => $keyStats,
+            'featuredFigures' => $featuredFigures,
+            'featuredMedia' => $featuredMedia,
+            'featuredMessages' => $featuredMessages,
+            'homepageFeatures' => $homepageFeatures,
+        ]);
+    }
 
     /**
      * Logs in a user.
@@ -160,13 +165,13 @@ public function actionIndex()
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        } else {
-            $model->password = '';
-
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        $model->password = '';
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -177,7 +182,6 @@ public function actionIndex()
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
@@ -197,11 +201,11 @@ public function actionIndex()
             }
 
             return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -243,11 +247,9 @@ public function actionIndex()
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
                 return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
+            Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
         }
 
         return $this->render('requestPasswordResetToken', [
@@ -272,7 +274,6 @@ public function actionIndex()
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->session->setFlash('success', 'New password saved.');
-
             return $this->goHome();
         }
 
@@ -323,7 +324,7 @@ public function actionIndex()
         }
 
         return $this->render('resendVerificationEmail', [
-            'model' => $model
+            'model' => $model,
         ]);
     }
 }
