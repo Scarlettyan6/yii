@@ -162,14 +162,8 @@ class DataController extends Controller
         return null;
     }
 
-    public function actionIndex()
+    private function buildData(): array
     {
-        return $this->render('index');
-    }
-
-    public function actionApi()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
         $dir = $this->csvDir();
 
         $categories = [
@@ -651,6 +645,21 @@ class DataController extends Controller
         ];
     }
 
+    public function actionIndex()
+    {
+        $data = $this->buildData();
+        return $this->render('index', [
+            'categories' => $data['categories'] ?? [],
+            'meta' => $data['meta'] ?? [],
+        ]);
+    }
+
+    public function actionApi()
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $this->buildData();
+    }
+
     public function actionDownload($key)
     {
         $dir = $this->csvDir();
@@ -660,4 +669,3 @@ class DataController extends Controller
         return Yii::$app->response->sendFile($path, $safe);
     }
 }
-
