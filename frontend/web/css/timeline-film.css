@@ -1,0 +1,348 @@
+:root{
+  --bg:#0c0e12;
+  --card:#141821;
+  --muted:#8b95a7;
+  --text:#e7ebf3;
+  --accent:#f3c969;
+  --accent-2:#59b5ff;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.timeline-film-root {
+  position: relative;
+
+  /* === 关键：从 bootstrap 的 .container 里“冲出来”，占满整屏宽度 === */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  /* 把 container 自带的上、下间距吃掉，让黑色区域紧贴红色栏 */
+  margin-top: -90px;   /* 如果还觉得上面有缝，可以再改成 -30 / -40 试试 */
+  margin-bottom: -50px;
+
+  /* 高度至少撑满视口剩余空间（顶部红栏大概 80px） */
+  min-height: calc(100vh - 40px);
+
+  background:
+    radial-gradient(1200px 800px at 10% -10%, #18202c 0%, transparent 60%),
+    radial-gradient(1400px 900px at 100% 0%, #0f1622 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans SC,
+        "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+
+  overflow: hidden;
+}
+
+/* 背景噪点：电影颗粒感 */
+.timeline-film-root::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.13;
+  mix-blend-mode:soft-light;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="120" height="120" filter="url(%23n)" opacity=".35"/></svg>');
+}
+
+/* 顶部标题 + 年份轴 */
+.timeline-film-header{
+  position:absolute;
+  left:0; right:0; top:0;
+  z-index:5;
+  padding:18px 32px 14px 32px;
+  backdrop-filter:blur(6px);
+  background:linear-gradient(180deg, rgba(12,14,18,.9), rgba(12,14,18,.45), transparent);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.timeline-film-header .title{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+}
+.timeline-film-header .title h1{
+  margin:0;
+  font-size:22px;
+  letter-spacing:.5px;
+}
+.timeline-film-header .title span{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* 顶部年份 chips */
+.year-axis{
+  margin-top:10px;
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scrollbar-width:thin;
+}
+.year-axis::-webkit-scrollbar{ height:8px; }
+.year-axis::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.25);
+  border-radius:999px;
+}
+.year-chip{
+  flex:0 0 auto;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--muted);
+  cursor:pointer;
+  user-select:none;
+  transition:.2s transform,.2s background,.2s color,.2s border-color;
+}
+.year-chip.active,
+.year-chip:hover{
+  color:#0c0e12;
+  background:var(--accent);
+  border-color:transparent;
+  transform:translateY(-1px);
+}
+
+/* 主区域：在 header 下面，撑满到底部 */
+.tl-wrap{
+  position:absolute;
+  left:0; right:0;
+  top:96px;          /* 对应 header 高度，可微调 */
+  bottom:0;
+  display:flex;
+}
+
+/* 左侧“胶片孔” */
+.film-rail{
+  width:68px;
+  border-right:1px solid rgba(255,255,255,.08);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:18px 0;
+  gap:12px;
+}
+.perforation{
+  width:40px;
+  height:20px;
+  background:#0a0c10;
+  border:2px solid #252a34;
+  border-radius:4px;
+  box-shadow:inset 0 -2px 0 rgba(255,255,255,.04);
+}
+
+/* 横向卡片画廊 */
+.gallery{
+  overflow-x:auto;
+  overflow-y:hidden;
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:min(88vw, 950px);
+  gap:28px;
+  padding:22px 40px 40px;
+  scroll-snap-type:x mandatory;
+  align-items:stretch;
+  width:100%;
+}
+.gallery::-webkit-scrollbar{ height:10px; }
+.gallery::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.18);
+  border-radius:999px;
+}
+
+/* 电影卡片 */
+.card{
+  position:relative;
+  scroll-snap-align:center;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:minmax(260px, 52vh) auto;
+}
+.poster{
+  position:relative;
+  background:#0b0f18;
+}
+.poster img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:saturate(.92) contrast(1.02);
+  transform-origin:center;
+  transition:transform .45s ease;
+}
+.card:hover .poster img{
+  transform:scale(1.04);
+}
+.poster.placeholder{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
+  font-size:14px;
+  background:linear-gradient(135deg, rgba(243,201,105,.08), rgba(89,181,255,.08));
+}
+.poster::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.65) 92%);
+  pointer-events:none;
+}
+
+/* 年份徽章 */
+.badge{
+  position:absolute;
+  left:16px;
+  top:16px;
+  padding:6px 10px;
+  font-weight:600;
+  letter-spacing:.4px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.35);
+}
+.badge.imp-3{
+  border-color:rgba(243,201,105,.7);
+  color:var(--accent);
+}
+.badge.imp-2{
+  border-color:rgba(89,181,255,.7);
+  color:var(--accent-2);
+}
+
+/* 卡片文字区 */
+.meta{
+  padding:18px 20px 18px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px 14px;
+  align-items:center;
+}
+.meta h3{
+  margin:0;
+  font-size:20px;
+}
+.meta .date{
+  color:var(--accent);
+  font-weight:600;
+}
+.meta p{
+  grid-column:1 / -1;
+  margin:4px 0 0;
+  color:#c8d0de;
+}
+.tags{
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.tag{
+  font-size:12px;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,.12);
+  padding:3px 8px;
+  border-radius:999px;
+}
+.more{
+  grid-column:2;
+  justify-self:end;
+  appearance:none;
+  border:none;
+  color:#0c0e12;
+  background:linear-gradient(180deg, var(--accent), #f7b63b);
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  box-shadow:0 6px 20px rgba(243,201,105,.3);
+}
+
+/* 详情弹窗 */
+dialog{
+  border:none;
+  border-radius:16px;
+  padding:0;
+  width:min(920px, 92vw);
+  background:var(--card);
+  color:var(--text);
+  box-shadow:var(--shadow);
+}
+dialog::backdrop{
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(2px);
+}
+.tl-dl-head{
+  display:flex;
+  gap:20px;
+  padding:16px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  align-items:center;
+}
+.tl-dl-head img{
+  width:180px;
+  height:110px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#0b0f18;
+}
+.tl-dl-head h3{ margin:0; }
+.tl-dl-date{
+  font-size:14px;
+  color:var(--accent);
+}
+.tl-dl-body{
+  padding:16px 18px 20px;
+}
+.tl-dl-body p{
+  margin:.2rem 0 0;
+  color:#d5dbea;
+}
+.tl-dl-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:10px;
+}
+.tl-dl-tags{
+  margin-top:10px;
+}
+
+/* 弹窗底部按钮 */
+.tl-dl-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px 16px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.tl-btn{
+  appearance:none;
+  border:none;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:700;
+}
+.tl-btn-ghost{
+  color:var(--muted);
+  background:transparent;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+/* 小屏优化 */
+@media (max-width: 720px){
+  .gallery{
+    grid-auto-columns:92vw;
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .film-rail{ display:none; }
+  .tl-dl-grid{
+    grid-template-columns:1fr;
+  }
+}
