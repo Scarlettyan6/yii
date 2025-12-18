@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Figure;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Figure */
@@ -31,13 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'birth_date',
-            'death_date',
             'biography:ntext',
             'achievements:ntext',
             'cover_image_url:url',
-            'created_at',
-            'updated_at',
         ],
     ]) ?>
 

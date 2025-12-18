@@ -1,38 +1,48 @@
-<?php 
- namespace frontend\controllers; 
- 
- use yii\web\Controller; 
- use common\models\Figure; // <-- 引入模型 
- use yii\web\NotFoundHttpException; 
- 
- class FigureController extends Controller 
- { 
-     /** 
-      * 显示人物专栏列表页 
-      */ 
-     public function actionIndex() 
-     { 
-         $figures = Figure::find()->orderBy(['name' => SORT_ASC])->all(); 
-         
-         return $this->render('index', [ 
-             'figures' => $figures, 
-         ]); 
-     } 
- 
-     /** 
-      * 显示单个人物的详情页 
-      * @param integer $id 人物的 ID 
-      */ 
-     public function actionView($id) 
-     { 
-         $figure = Figure::findOne($id); 
-         
-         if ($figure === null) { 
-             throw new NotFoundHttpException('您所查找的人物不存在。'); 
-         } 
-         
-         return $this->render('view', [ 
-             'figure' => $figure, 
-         ]); 
-     } 
- }
+<?php
+
+namespace frontend\controllers;
+
+use yii\web\Controller;
+use yii\data\ActiveDataProvider;
+use common\models\Figure;
+use yii\web\NotFoundHttpException;
+
+class FigureController extends Controller
+{
+    /**
+     * 人物列表（分页）。
+     */
+    public function actionIndex()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Figure::find()->where(['deleted_at' => null])->orderBy(['name' => SORT_ASC]),
+            'pagination' => [
+                'pageSize' => 12,
+            ],
+        ]);
+
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * 人物详情。
+     *
+     * @param int $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
+    public function actionView($id)
+    {
+        $figure = Figure::find()->where(['id' => $id, 'deleted_at' => null])->one();
+
+        if ($figure === null) {
+            throw new NotFoundHttpException('您所查找的人物不存在。');
+        }
+
+        return $this->render('view', [
+            'figure' => $figure,
+        ]);
+    }
+}

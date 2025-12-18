@@ -1,0 +1,83 @@
+﻿/* 人物卡片统一尺寸与图片裁剪 */
+.figure-card-wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.figure-card {
+    flex: 1;
+    height: 360px; /* 整体固定高度，可按需调整 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+.figure-card__img-wrap {
+    width: 100%;
+    height: 300px; /* 固定图片展示高度，可按需调整 */
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.figure-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.figure-card .caption {
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* 控制标题与按钮距离 */
+    align-items: center;
+}
+
+.figure-card__title {
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 影视卡片统一尺寸与标题高度 */
+.media-index .thumbnail.media-card {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow: hidden;
+}
+
+.media-card__img-wrap {
+    width: 100%;
+    height: 280px; /* 固定图片展示高度，可按需调整 */
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+
+.media-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.media-card .caption {
+    margin-top: 2px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.media-card__title {
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
