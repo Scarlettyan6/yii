@@ -37,3 +37,4 @@ $pagination = $dataProvider->getPagination();
         'pagination' => $pagination,
     ]) ?>
 </div>
+

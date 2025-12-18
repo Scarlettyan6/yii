@@ -8,6 +8,8 @@ use backend\models\GuestbookMessageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\db\Expression;
 
 /**
  * GuestbookMessageController implements the CRUD actions for GuestbookMessage model.
@@ -20,10 +22,20 @@ class GuestbookMessageController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'approve' => ['POST'],
                 ],
             ],
         ];
@@ -104,9 +116,59 @@ class GuestbookMessageController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $message = $this->findModel($id);
+        if ($message->delete()) {
+            Yii::$app->session->setFlash('success', '留言已删除');
+        } else {
+            Yii::$app->session->setFlash('error', '删除失败');
+        }
 
-        return $this->redirect(['index']);
+        return $this->redirect(Yii::$app->request->referrer ?: ['admin']);
+    }
+
+    /**
+     * 管理员审核留言（通过/撤销审核）
+     */
+    public function actionApprove($id)
+    {
+        $message = $this->findModel($id);
+
+        if ($message->is_approved) {
+            $message->is_approved = 0;
+            $flashMessage = '留言审核已撤销';
+        } else {
+            $message->is_approved = 1;
+            $flashMessage = '留言已审核通过';
+        }
+
+        if ($message->save()) {
+            Yii::$app->session->setFlash('success', $flashMessage);
+        } else {
+            Yii::$app->session->setFlash('error', '操作失败');
+        }
+
+        return $this->redirect(Yii::$app->request->referrer ?: ['admin']);
+    }
+
+    /**
+     * 管理留言的页面
+     */
+    public function actionAdmin()
+    {
+        $pendingMessages = GuestbookMessage::find()
+            ->where(['is_approved' => 0])
+            ->orderBy(['created_at' => SORT_DESC])
+            ->all();
+
+        $approvedMessages = GuestbookMessage::find()
+            ->where(['is_approved' => 1])
+            ->orderBy(['created_at' => SORT_DESC])
+            ->all();
+
+        return $this->render('admin', [
+            'pendingMessages' => $pendingMessages,
+            'approvedMessages' => $approvedMessages,
+        ]);
     }
 
     /**

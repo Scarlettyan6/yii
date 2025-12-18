@@ -30,6 +30,7 @@ use common\models\HomepageFeature;
  */
 class SiteController extends Controller
 {
+    
     /**
      * {@inheritdoc}
      */
