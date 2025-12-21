@@ -12,18 +12,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nickname')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nickname')->textInput(['maxlength' => true])->label('昵称') ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'content')->textarea(['rows' => 6])->label('留言内容') ?>
 
-    <?= $form->field($model, 'is_approved')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'is_approved')->dropDownList([
+        1 => '已审核',
+        0 => '待审核'
+    ], ['prompt' => '请选择审核状态'])->label('审核状态') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '创建留言' : '更新留言', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

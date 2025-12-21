@@ -12,26 +12,23 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('标题') ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+    <?= $form->field($model, 'type')->dropDownList([
+        'video' => '视频',
+        'audio' => '音频',
+        'image' => '图片',
+        'document' => '文档'
+    ], ['prompt' => '请选择媒体类型'])->label('媒体类型') ?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'url')->textInput(['maxlength' => true])->label('资源链接') ?>
 
-    <?= $form->field($model, 'path')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'path')->textInput(['maxlength' => true])->label('本地路径') ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'linkable_type')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'linkable_id')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6])->label('资源描述') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '创建资源' : '更新资源', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

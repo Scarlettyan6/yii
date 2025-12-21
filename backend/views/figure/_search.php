@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id')->label('人物ID') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name')->label('人物姓名') ?>
 
-    <?= $form->field($model, 'birth_date') ?>
+    <?= $form->field($model, 'birth_date')->label('出生日期') ?>
 
-    <?= $form->field($model, 'death_date') ?>
+    <?= $form->field($model, 'death_date')->label('逝世日期') ?>
 
-    <?= $form->field($model, 'biography') ?>
+    <?= $form->field($model, 'biography')->label('人物生平') ?>
 
     <?php // echo $form->field($model, 'achievements') ?>
 
@@ -34,8 +34,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

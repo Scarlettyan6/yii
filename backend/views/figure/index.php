@@ -22,10 +22,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'name',
+            [
+                'attribute' => 'id',
+                'label' => '编号',
+            ],
+            [
+                'attribute' => 'name',
+                'label' => '人物姓名',
+            ],
             [
                 'attribute' => 'biography',
+                'label' => '人物生平',
                 'format' => 'ntext',
                 'contentOptions' => ['style' => 'max-width:300px; white-space:normal;'],
             ],

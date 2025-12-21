@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\BattleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Battles';
+$this->title = '战役管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="battle-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Battle', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建战役', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,11 +26,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'name',
-            'start_date',
-            'end_date',
-            'main_location',
+            [
+                'attribute' => 'id',
+                'label' => '编号',
+            ],
+            [
+                'attribute' => 'name',
+                'label' => '战役名称',
+            ],
+            [
+                'attribute' => 'start_date',
+                'label' => '开始日期',
+                'format' => 'date',
+            ],
+            [
+                'attribute' => 'end_date',
+                'label' => '结束日期',
+                'format' => 'date',
+            ],
+            [
+                'attribute' => 'main_location',
+                'label' => '主要地点',
+            ],
             //'main_latitude',
             //'main_longitude',
             //'description:ntext',

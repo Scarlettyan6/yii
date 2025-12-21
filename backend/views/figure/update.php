@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Figure */
 
-$this->title = 'Update Figure: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Figures', 'url' => ['index']];
+$this->title = '编辑人物：' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => '抗战人物', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '编辑';
 ?>
 <div class="figure-update">
 

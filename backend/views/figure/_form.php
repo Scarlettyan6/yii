@@ -13,16 +13,16 @@ use common\models\Figure;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('人物姓名') ?>
 
-    <?= $form->field($model, 'biography')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'biography')->textarea(['rows' => 6])->label('人物生平') ?>
 
-    <?= $form->field($model, 'achievements')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'achievements')->textarea(['rows' => 6])->label('主要成就') ?>
 
-    <?= $form->field($model, 'cover_image_url')->textInput(['maxlength' => true, 'placeholder' => 'http://...']) ?>
+    <?= $form->field($model, 'cover_image_url')->textInput(['maxlength' => true, 'placeholder' => 'http://...'])->label('封面图片链接') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '创建人物' : '更新人物', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

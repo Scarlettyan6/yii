@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\MediaResourceSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Media Resources';
+$this->title = '媒体资源管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="media-resource-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Media Resource', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建媒体资源', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,11 +26,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'title',
-            'type',
-            'url:url',
-            'path',
+            [
+                'attribute' => 'id',
+                'label' => '编号',
+            ],
+            [
+                'attribute' => 'title',
+                'label' => '标题',
+            ],
+            [
+                'attribute' => 'type',
+                'label' => '类型',
+            ],
+            [
+                'attribute' => 'url',
+                'label' => '链接',
+                'format' => 'url',
+            ],
+            [
+                'attribute' => 'path',
+                'label' => '路径',
+            ],
             //'description:ntext',
             //'linkable_type',
             //'linkable_id',

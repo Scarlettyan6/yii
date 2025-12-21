@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\TimelineEventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Timeline Events';
+$this->title = '时间戳管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="timeline-event-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Timeline Event', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新建时间戳', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,11 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'event_date',
-            'title',
-            'description:ntext',
-            'cover_image_url:url',
+            [
+                'attribute' => 'id',
+                'label' => '编号',
+            ],
+            [
+                'attribute' => 'event_date',
+                'label' => '事件日期',
+                'format' => 'date',
+            ],
+            [
+                'attribute' => 'title',
+                'label' => '事件标题',
+            ],
+            [
+                'attribute' => 'description',
+                'label' => '事件描述',
+                'format' => 'ntext',
+            ],
+            [
+                'attribute' => 'cover_image_url',
+                'label' => '封面图片',
+                'format' => 'url',
+            ],
             //'importance',
             //'created_at',
             //'updated_at',

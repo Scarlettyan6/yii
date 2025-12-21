@@ -50,6 +50,12 @@ AppAsset::register($this);
         ['label' => '影视信息', 'url' => ['/media/index']],
         ['label' => '留言板', 'url' => ['/guestbook/index']],
         ['label' => '团队介绍', 'url' => ['/site/team']],
+        [
+            'label' => '<i class="glyphicon glyphicon-cog"></i> 后台管理',
+            'url' => '/yii2025/backend/web/index.php?r=site/login',
+            'linkOptions' => ['target' => '_blank', 'title' => '登录后台管理系统'],
+            'encode' => false,
+        ],
     ];
 
     // --- 修正点 3: Nav::widget() 也是正确的 ---

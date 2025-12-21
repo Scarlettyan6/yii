@@ -26,15 +26,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'title',
-            'subtitle',
-            'link_url:url',
+            [
+                'attribute' => 'title',
+                'label' => '标题',
+            ],
+            [
+                'attribute' => 'subtitle',
+                'label' => '副标题',
+            ],
+            [
+                'attribute' => 'link_url',
+                'label' => '链接地址',
+                'format' => 'url',
+            ],
             [
                 'attribute' => 'display_order',
+                'label' => '显示顺序',
                 'contentOptions' => ['style' => 'width:100px;'],
             ],
             [
                 'attribute' => 'is_active',
+                'label' => '是否启用',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->is_active ? '<span class="label label-success">启用</span>' : '<span class="label label-default">禁用</span>';
+                },
                 'value' => function ($model) {
                     return $model->is_active ? '启用' : '停用';
                 },

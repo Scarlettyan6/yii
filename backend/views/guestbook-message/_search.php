@@ -15,21 +15,24 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id')->label('留言ID') ?>
 
-    <?= $form->field($model, 'nickname') ?>
+    <?= $form->field($model, 'nickname')->label('昵称') ?>
 
-    <?= $form->field($model, 'content') ?>
+    <?= $form->field($model, 'content')->label('留言内容') ?>
 
-    <?= $form->field($model, 'is_approved') ?>
+    <?= $form->field($model, 'is_approved')->dropDownList([
+        1 => '已审核',
+        0 => '待审核'
+    ], ['prompt' => '全部'])->label('审核状态') ?>
 
-    <?= $form->field($model, 'created_at') ?>
+    <?= $form->field($model, 'created_at')->label('创建时间') ?>
 
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

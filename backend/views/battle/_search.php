@@ -15,15 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id')->label('战役ID') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name')->label('战役名称') ?>
 
-    <?= $form->field($model, 'start_date') ?>
+    <?= $form->field($model, 'start_date')->label('开始日期') ?>
 
-    <?= $form->field($model, 'end_date') ?>
+    <?= $form->field($model, 'end_date')->label('结束日期') ?>
 
-    <?= $form->field($model, 'main_location') ?>
+    <?= $form->field($model, 'main_location')->label('主要地点') ?>
 
     <?php // echo $form->field($model, 'main_latitude') ?>
 
@@ -42,8 +42,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('搜索', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('重置', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
