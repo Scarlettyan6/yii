@@ -1,129 +1,138 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Json;
+use frontend\assets\TimelineAsset;
 
-$this->title = '抗战时间轴';
-$this->params['breadcrumbs'][] = $this->title;
+/** @var yii\web\View $this */
+/** @var array|\common\models\TimelineEvent[] $events */
+
+$this->registerCss("
+    html, body {
+        height: 100%;
+        overflow-y: hidden;
+    }
+");
+
+$this->title = '1931–1945 抗战大事件 · 电影画廊时间轴';
+TimelineAsset::register($this);
+
+/**
+ * 这里是“弹窗详情用”的扩写内容（不改卡片，不动 CSS）
+ * key 用 id（字符串）对应你表里的记录 id。
+ * 你以后如果把这些长文写进数据库，也可以把这里删掉，改成读字段即可。
+ */
+$detailMap = [
+  '3'  => "九一八事变并不是一场孤立的“突发事件”，而是侵略方以制造借口、迅速夺取要地为特征的行动开端。日本关东军以铁路爆炸为由发动进攻，东北局势在短时间内急转直下：城市与交通枢纽相继失守，社会秩序与民众生活被迫卷入战时状态。更深的影响在于，它让全国第一次清晰地意识到危机已不再停留在边境与传闻之中，“抗战”从一个遥远的词变成迫在眉睫的现实，抗日救亡的情绪与动员由此被点燃并持续发酵。",
+  '4'  => "一·二八淞沪抗战发生在国际目光聚集的上海，日军以挑衅升级为军事行动，十九路军等守军在城市街区与要点展开顽强抵抗。战斗让人们看到：即便在装备与补给处于劣势的情况下，抵抗并非不可能；同时，上海的炮火也让“战争代价”变得直观——工业、商业与普通市民都承受巨大冲击。这场抗战的意义不仅在胜负，更在影响：它震动全国舆论，强化了救亡图存的共识，使抗日从零散的情绪走向更广泛、更组织化的社会行动。",
+  '5'  => "伪满洲国的成立标志着侵略者把占领从军事控制推进到政治与制度的“固定化”。在伪政权的外壳之下，东北资源被系统性掠夺，社会与治安被强力压制，普通人的生活被迫纳入殖民统治逻辑。它的出现也让全国更清楚地看见侵略的真实目标并非“局部利益”，而是长期占据与全面控制。对后来的抗战叙事而言，伪满的存在不仅是一段屈辱史，更是一面镜子：提醒人们如果不抵抗，沦陷会被写进制度、写进日常，甚至写进未来的秩序。",
+  '6'  => "塘沽协定在当时被视为以退让换取缓冲的安排，但其后果是华北安全空间被进一步压缩，侵略方获得更大回旋余地，局势反而更趋恶化。对社会而言，这样的协定带来一种强烈的焦虑：并非每一次妥协都能换来和平，反而可能让对手更确信“以压迫换让步”的有效性。它促使更多人重新思考国家与战争的关系——当底线不断后退，最终失去的不只是领土与城市，也包括民心与信心；因此，要求更坚决抵抗、更有效动员的呼声在之后越来越强。",
+  '7'  => "一二·九运动是一场由青年学生点燃、迅速扩散的抗日救亡浪潮，它把“停止内耗、一致对外”的诉求推到公共空间的中心。学生走上街头，不只是表达情绪，更是在呼唤一种更清晰的国家方向：如何面对侵略，如何凝聚力量。运动的历史价值在于它改变了社会气氛——更多人开始把国家命运与个人选择联系起来，舆论压力、社会动员与政治讨论相互推动，使抗战不再只是军事与外交的议题，也成为全社会共同承担的现实课题。",
+  '8'  => "西安事变以极具戏剧性的方式迫使国内政治路线发生转折：张学良、杨虎城扣押蒋介石，提出停止内战、联合抗日的主张，并在多方斡旋下以和平方式解决。它的意义不在“扣押”本身，而在于为全国一致抗战创造了更现实的条件——当外敌压力不断加大，内部继续消耗只会让局势更危险。西安事变之后，合作抗日的方向逐渐明朗，社会对“共同对敌”的期待也更集中；从历史镜头看，这是一场把国家从分裂边缘拉回到共同目标的关键推力。",
+  '9'  => "卢沟桥事变常被视为全民族抗战全面爆发的标志性起点，因为它把原本可能被局限为“局部冲突”的摩擦，迅速推向无法回避的全国性战争。枪声之后，动员、迁徙、征调与生产体系开始按战时节奏重组，许多人的日常生活在一夜之间被改写。更深层的变化在于社会心理：对“还能否避免战争”的最后幻想被击碎，抵抗成为共同命题。它不仅是一场战斗的开始，也是一个时代的开关——从此，历史进入漫长而沉重的持久对抗。",
+  '10' => "淞沪会战在上海展开，双方投入巨大兵力，战斗强度高、持续时间长，城市空间与民众生活承受极端压力。对中国而言，这是一场代价沉重却意义深远的抵抗：在战略上，它迫使敌军付出时间与成本，改变其推进节奏，为后方转移、工业内迁与持久战准备争取窗口；在政治与舆论上，它向国内外展示“不会迅速崩溃”的决心。淞沪的炮火因此不仅是军事对抗，也是意志与信念的较量，留下了“以空间换时间”的艰难注脚。",
+  '11' => "南京大屠杀发生在城市陷落之后，暴行并未随着战斗结束而停止，大规模屠杀与惨无人道的行为造成巨大人道灾难。这段历史之所以沉重，不只是数字层面的伤亡，更在于它把战争的残酷与无底线暴露得触目惊心：人们看到的不只是城市的失守，更是文明底线被践踏的瞬间。它在民族记忆里成为难以愈合的伤口，也让“记录、见证、反思与追责”变成长期公共议题——提醒后人，战争的真相需要被清晰地记住，才能避免悲剧被轻易掩盖或重演。",
+  '12' => "花园口决堤是一道充满争议与痛感的历史选择：为阻滞敌军推进，黄河堤防被人为决开，洪水在军事上形成阻隔，却也带来大范围的民生灾难与长期破坏。它让人们直面战争中的“极端两难”——当国家生存面临紧迫威胁，决策往往在更少的选项里做出，但代价可能由普通人承担得最重。此事的意义不仅在战术得失，更在提醒：战争的伤害并不只发生在前线，也可能以更隐蔽、更漫长的方式蔓延到土地、家园与代际命运之中。",
+  '13' => "武汉会战结束后，中心城市失守，正面战场由此进入更漫长的战略相持阶段。所谓“相持”并非停战，而是持续消耗与韧性考验：交通线的争夺、资源的调配、工业的重建与后方的组织，都要在压力下长期运转。武汉的失守在情绪上沉重，却也推动抗战形态的成熟——从依赖几次决定性会战，转向更系统的持久对抗与社会动员。它让战争从“短期决胜”的想象，回到“长期坚持”的现实。",
+  '14' => "二战全面爆发使国际格局剧烈变化，力量对比与外交走向被重新洗牌，战争从区域冲突走向全球体系的对抗。对中国抗战而言，这意味着外部变量开始显著影响战局：国际舆论、援助通道、同盟合作与战后安排逐步进入同一张更大的棋盘。中国战场不再只是“东方的局部战争”，而成为世界反法西斯战争的重要组成部分。国际格局的变化既带来希望，也带来更复杂的博弈——抗战因此不仅是枪炮与阵地，更是长期的战略耐力与国际协作。",
+  '15' => "百团大战是敌后战场的一次集中性大规模行动，八路军针对华北日军交通线与据点展开破袭，影响了敌方补给、机动与控制网络。它的意义在于把敌后战场的存在感推到前台：破袭战、游击战与交通线争夺成为长期对抗的重要手段，证明侵略方并不能“稳稳控制”占领区。然而它也带来更残酷的反作用：敌方报复与封锁往往更严厉，普通民众承受的压力陡增。百团大战因此是一段兼具震撼与沉重的历史镜头，映照出敌后抗战的勇气与代价。",
+  '16' => "皖南事变使国共关系遭受严重冲击，合作氛围破裂，政治与军事协同出现深刻裂痕。在外敌压力仍然巨大的背景下，这一事件让抗战内部矛盾更加尖锐：一方面削弱了共同对敌的统一性，另一方面也让战时政治更复杂、更敏感。值得注意的是，抗战并未因此停止，前线与敌后仍在艰难条件下坚持战斗与组织动员。皖南事变像一道阴影，提醒人们在战争中不仅要面对外部侵略，也要处理内部裂痕——而这往往同样决定持久战能否走到最后。",
+  '17' => "太平洋战争爆发后，中日战争被纳入世界反法西斯战争的总体框架，战争的尺度与意义发生“全球化”的转变。对中国而言，这带来更明确的同盟合作与外援空间，也让战后秩序与领土安排进入国际会议与联盟体系的议程。与此同时，战争压力并不会因此减轻：它要求更复杂的协调、更长期的资源投入与更稳定的社会动员。珍珠港之后的世界把中国战场放到更大的舞台上——从此，抗战不仅关乎一国存亡，也与全球反侵略的共同目标紧密相连。",
+  '18' => "滇缅战役与远征军的经历常被概括为“艰苦、复杂、沉重”：远征军入缅作战面临陌生地形、恶劣气候与困难补给，同时还牵涉国际协同与交通线安全等关键问题。它既展现了国际联合抗战的现实面貌，也暴露了后勤、装备、情报与组织体系的多重限制。对抗战史而言，这不是一段简单的“胜败叙事”，而是一段关于体系能力的考验：勇气固然重要，但能否持续作战、能否维系补给与协同，往往更决定一支军队能走多远。",
+  '19' => "开罗宣言在同盟国框架下明确战后处理方向，强调日本以侵略手段窃取的中国领土应当归还中国。它的重要性在于把“抗战的正当目标”写入国际承诺：不仅是结束战斗，更是恢复主权与领土完整。对国内而言，宣言强化了坚持到底的信心；对国际政治而言，它让战后秩序的轮廓更清晰，使中国的战后权益不再只是道德诉求，而拥有更明确的政治背书。开罗宣言因此像一盏灯，照见“战争终点应当通向怎样的世界”。",
+  '20' => "豫湘桂会战（及相关大规模进攻）把抗战后期的艰难推到极限：战线被拉长，多地局势急转，交通与后方受到严重冲击，国家资源与社会承受力面临严峻考验。它不仅是军事压力的集中爆发，也是后方组织、工业生产、民心稳定与战略调度的综合压力测试。正是在这种困境中，“坚持”的意义被重新定义：它不再只是口号，而是无数人以迁徙、劳作、牺牲与忍耐维系出来的现实。豫湘桂会战留下的，是最艰难阶段里仍不放弃的历史印记。",
+  '22' => "对日受降签字象征战争在制度层面的正式结束：日本在密苏里号上签署投降书，胜利被确认，炮火终于停歇。但胜利并不意味着轻松的终章，它更像一扇门——门后是漫长的善后、重建与记忆整理：城市与乡村需要恢复，创伤需要被安放，失去需要被纪念。回望这一天，人们看到的不只是仪式本身，更是无数前线与后方的坚持汇聚成最终结局。抗战胜利完成，代价沉重，意义也因此更厚重。",
+];
+
+// 导出给前端：summary 仍用数据库里的 description（卡片不变）
+// detail 用上面扩写内容（只用于弹窗展示）
+$eventData = [];
+foreach ($events as $e) {
+    $isArray = is_array($e);
+
+    $id          = $isArray ? ($e['id'] ?? null)              : ($e->id ?? null);
+    $date        = $isArray ? ($e['event_date'] ?? null)      : ($e->event_date ?? null);
+    $title       = $isArray ? ($e['title'] ?? '')             : ($e->title ?? '');
+    $desc        = $isArray ? ($e['description'] ?? '')       : ($e->description ?? '');
+    $cover       = $isArray ? ($e['cover_image_url'] ?? '')   : ($e->cover_image_url ?? '');
+    $importance  = $isArray ? ($e['importance'] ?? 1)         : ($e->importance ?? 1);
+
+    $ts   = $date ? strtotime($date) : null;
+    $year = $ts ? (int)date('Y', $ts) : null;
+
+    $sid = (string)$id;
+
+    $eventData[] = [
+        'id'         => $sid,
+        'date'       => (string)$date,
+        'year'       => $year,
+        'title'      => (string)$title,
+        'summary'    => (string)($desc ?: '（暂无简介）'),               // 卡片仍显示这一行（不变）
+        'detail'     => (string)($detailMap[$sid] ?? $desc ?? ''),     // 弹窗显示这个（扩写）
+        'poster'     => (string)($cover ?: ''),
+        'importance' => (int)($importance ?: 1),
+    ];
+}
+
+$eventsJson = Json::encode($eventData, JSON_UNESCAPED_UNICODE);
+$this->registerJs("window.TIMELINE_EVENTS = $eventsJson;", \yii\web\View::POS_HEAD);
 ?>
-<div class="timeline-index">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <ul class="timeline">
-        <?php foreach ($events as $event): ?>
-            <li>
-                <div class="timeline-badge"></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="timeline-title"><?= Html::encode($event->title) ?></h4>
-                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <?= Yii::$app->formatter->asDate($event->event_date, 'long') ?></small></p>
-                    </div>
-                    <div class="timeline-body">
-                        <p><?= Html::encode($event->description) ?></p>
-                    </div>
-                </div>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+<div class="timeline-film-root">
+  <!-- 顶部标题 + 年份轴 -->
+  <header class="timeline-film-header">
+    <div class="title">
+      <h1><?= Html::encode($this->title) ?></h1>
+      <span>横向滚动 · 逐张观影 · 点击查看详情</span>
+    </div>
+    <div id="yearAxis" class="year-axis" aria-label="年份快速跳转"></div>
+  </header>
 
+  <!-- 主区域：左侧胶片孔 + 右侧卡片画廊 -->
+  <div class="tl-wrap">
+    <aside class="film-rail" aria-hidden="true">
+      <?php for ($i = 0; $i < 12; $i++): ?>
+        <div class="perforation"></div>
+      <?php endfor; ?>
+    </aside>
+
+    <section id="gallery" class="gallery" aria-label="大事件画廊"></section>
+  </div>
+
+  <!-- 详情弹窗（结构不改；我们只改 JS 填充逻辑） -->
+  <dialog id="detail">
+    <div class="tl-dl-head">
+      <img id="dlImg" alt="事件配图">
+      <div>
+        <div class="tl-dl-date" id="dlDate"></div>
+        <h3 id="dlTitle"></h3>
+        <div class="tl-dl-tags" id="dlTags"></div>
+      </div>
+    </div>
+
+    <div class="tl-dl-body">
+      <div class="tl-dl-grid">
+        <div>
+          <strong>重要性</strong>
+          <p id="dlImp"></p>
+        </div>
+        <div>
+          <strong>日期</strong>
+          <p id="dlDate2"></p>
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <strong>概述</strong>
+        <p id="dlDesc"></p>
+      </div>
+    </div>
+
+    <div class="tl-dl-foot">
+      <span style="color:var(--muted);">数据来源：timeline_event 表</span>
+      <button
+        type="button"
+        class="tl-btn tl-btn-ghost"
+        onclick="document.getElementById('detail').close()"
+      >关闭</button>
+    </div>
+  </dialog>
 </div>
-
-<style>
-.timeline {
-    list-style: none;
-    padding: 20px 0 20px;
-    position: relative;
-}
-
-.timeline:before {
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    content: " ";
-    width: 3px;
-    background-color: #eeeeee;
-    left: 50%;
-    margin-left: -1.5px;
-}
-
-.timeline > li {
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.timeline > li:before,
-.timeline > li:after {
-    content: " ";
-    display: table;
-}
-
-.timeline > li:after {
-    clear: both;
-}
-
-.timeline > li > .timeline-panel {
-    width: 46%;
-    float: left;
-    border: 1px solid #d4d4d4;
-    border-radius: 2px;
-    padding: 20px;
-    position: relative;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
-}
-
-.timeline > li > .timeline-badge {
-    color: #fff;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.4em;
-    text-align: center;
-    position: absolute;
-    top: 16px;
-    left: 50%;
-    margin-left: -25px;
-    background-color: #999999;
-    z-index: 100;
-    border-top-right-radius: 50%;
-    border-top-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel {
-    float: right;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel:before {
-    border-left-width: 0;
-    border-right-width: 15px;
-    left: -15px;
-    right: auto;
-}
-
-.timeline > li.timeline-inverted > .timeline-panel:after {
-    border-left-width: 0;
-    border-right-width: 14px;
-    left: -14px;
-    right: auto;
-}
-
-.timeline-badge.primary { background-color: #2e6da4 !important; }
-.timeline-badge.success { background-color: #3f903f !important; }
-.timeline-badge.warning { background-color: #f0ad4e !important; }
-.timeline-badge.danger  { background-color: #d9534f !important; }
-.timeline-badge.info    { background-color: #5bc0de !important; }
-
-.timeline-title {
-    margin-top: 0;
-    color: inherit;
-}
-
-.timeline-body > p,
-.timeline-body > ul {
-    margin-bottom: 0;
-}
-
-.timeline-body > p + p {
-    margin-top: 5px;
-}
-</style>

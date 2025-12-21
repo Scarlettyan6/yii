@@ -3,20 +3,21 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-class TimelineAsset extends AssetBundle
+class StatisticsAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl  = '@web';
 
     public $css = [
-        'css/timeline-film.css',
+        'css/war-stats.css',
     ];
 
     public $js = [
-        'js/timeline-film.js',
+        'js/war-stats.js',
     ];
 
     public $depends = [
         'frontend\assets\AppAsset',
+        'frontend\assets\EChartsAsset',
     ];
 }

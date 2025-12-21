@@ -370,7 +370,7 @@ $this->params['breadcrumbs'][] = $this->title;
 /* 全局样式 */
 .memorial-team-page {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif;
-    background: linear-gradient(to bottom, #f5f1ed 0%, #faf8f6 100%);
+    background: linear-gradient(180deg, #fff7eb 0%, #f9ecd9 100%);
     min-height: 100vh;
     padding: 40px 20px 60px;
 }
@@ -389,7 +389,7 @@ $this->params['breadcrumbs'][] = $this->title;
 .star-line {
     height: 2px;
     width: 200px;
-    background: linear-gradient(to right, transparent, #8b4513, transparent);
+    background: linear-gradient(to right, transparent, #b32010, transparent);
     margin: 0 auto;
     position: relative;
 }
@@ -400,7 +400,7 @@ $this->params['breadcrumbs'][] = $this->title;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #8b4513;
+    color: #b32010;
     font-size: 16px;
 }
 
@@ -415,14 +415,14 @@ $this->params['breadcrumbs'][] = $this->title;
 .page-header h1 {
     font-size: 3rem;
     font-weight: 700;
-    color: #2c1810;
+    color: #b32010;
     margin: 20px 0 15px;
     letter-spacing: 2px;
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #8b4513;
+    color: #9b1f00;
     font-weight: 500;
     letter-spacing: 1px;
 }
@@ -439,7 +439,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 .section-title i {
     font-size: 1.8rem;
-    color: #8b4513;
+    color: #b32010;
 }
 
 .section-title h2 {
@@ -465,41 +465,32 @@ $this->params['breadcrumbs'][] = $this->title;
 .member-card {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(44, 24, 16, 0.08);
+    box-shadow: 0 4px 20px rgba(179, 32, 16, 0.08);
     overflow: hidden;
     transition: all 0.4s ease;
-    border: 1px solid rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(179, 32, 16, 0.12);
 }
 
 .member-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(44, 24, 16, 0.15);
+    box-shadow: 0 12px 35px rgba(179, 32, 16, 0.18);
 }
 
 /* 卡片头部 - 使用纪念主题的庄重配色 */
 .card-header {
     padding: 30px 25px;
-    background: linear-gradient(135deg, #8b6f47 0%, #6d5d3b 100%);
+    background: linear-gradient(135deg, #d02a0f 0%, #a51d0c 100%);
     color: white;
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.member-card:nth-child(1) .card-header {
-    background: linear-gradient(135deg, #8b6f47 0%, #6d5d3b 100%);
-}
-
-.member-card:nth-child(2) .card-header {
-    background: linear-gradient(135deg, #9b7e58 0%, #7d6b4a 100%);
-}
-
-.member-card:nth-child(3) .card-header {
-    background: linear-gradient(135deg, #a58d68 0%, #8a7856 100%);
-}
-
+.member-card:nth-child(1) .card-header,
+.member-card:nth-child(2) .card-header,
+.member-card:nth-child(3) .card-header,
 .member-card:nth-child(4) .card-header {
-    background: linear-gradient(135deg, #b09c7a 0%, #978562 100%);
+    background: linear-gradient(135deg, #d02a0f 0%, #a51d0c 100%);
 }
 
 .member-avatar {
@@ -642,18 +633,19 @@ $this->params['breadcrumbs'][] = $this->title;
 .project-card {
     background: white;
     border-radius: 20px;
-    box-shadow: 0 6px 30px rgba(44, 24, 16, 0.1);
+    box-shadow: 0 6px 30px rgba(179, 32, 16, 0.1);
     overflow: hidden;
-    border: 1px solid rgba(139, 69, 19, 0.1);
+    border: 1px solid rgba(179, 32, 16, 0.12);
 }
 
 /* 项目横幅 */
 .project-banner {
-    background: linear-gradient(135deg, #2c1810 0%, #4a3426 50%, #6d5d3b 100%);
+    background: linear-gradient(135deg, #d02a0f 0%, #a51d0c 100%);
     padding: 60px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 12px 30px rgba(179, 32, 16, 0.18);
 }
 
 .project-banner::before {
@@ -682,7 +674,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 .project-subtitle {
     font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0;
     letter-spacing: 3px;
 }
@@ -896,7 +888,7 @@ $this->params['breadcrumbs'][] = $this->title;
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
-    color: #2c1810;
+    color: #b32010;
     margin-bottom: 5px;
     transition: color 0.3s ease;
 }
@@ -904,45 +896,20 @@ $this->params['breadcrumbs'][] = $this->title;
 .link-desc {
     display: block;
     font-size: 0.85rem;
-    color: #666;
+    color: #8a6b52;
 }
 
-/* 每个链接不同的悬停颜色 */
-.project-link.link-1:hover { border-color: #3498db; background: #3498db; }
-.project-link.link-1:hover i { color: white; }
-.project-link.link-1:hover .link-title { color: white; }
-
-.project-link.link-2:hover { border-color: #9b59b6; background: #9b59b6; }
-.project-link.link-2:hover i { color: white; }
-.project-link.link-2:hover .link-title { color: white; }
-
-.project-link.link-3:hover { border-color: #e74c3c; background: #e74c3c; }
-.project-link.link-3:hover i { color: white; }
-.project-link.link-3:hover .link-title { color: white; }
-
-.project-link.link-4:hover { border-color: #f39c12; background: #f39c12; }
-.project-link.link-4:hover i { color: white; }
-.project-link.link-4:hover .link-title { color: white; }
-
-.project-link.link-5:hover { border-color: #1abc9c; background: #1abc9c; }
-.project-link.link-5:hover i { color: white; }
-.project-link.link-5:hover .link-title { color: white; }
-
-.project-link.link-6:hover { border-color: #34495e; background: #34495e; }
-.project-link.link-6:hover i { color: white; }
-.project-link.link-6:hover .link-title { color: white; }
-
-.project-link.link-7:hover { border-color: #e67e22; background: #e67e22; }
-.project-link.link-7:hover i { color: white; }
-.project-link.link-7:hover .link-title { color: white; }
-
-.project-link.link-8:hover { border-color: #16a085; background: #16a085; }
-.project-link.link-8:hover i { color: white; }
-.project-link.link-8:hover .link-title { color: white; }
-
+/* 链接悬停统一使用专题首页红色系 */
 .project-link:hover {
+    border-color: #d02a0f;
+    background: linear-gradient(135deg, #d02a0f 0%, #a51d0c 100%);
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(179, 32, 16, 0.25);
+}
+
+.project-link:hover i,
+.project-link:hover .link-title {
+    color: white;
 }
 
 .project-link:hover .link-desc {

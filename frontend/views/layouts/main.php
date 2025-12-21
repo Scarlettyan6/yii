@@ -65,9 +65,25 @@ AppAsset::register($this);
 <!-- 'flex-shrink-0' 是 BS5 的, 'wrap' 是 Yii 默认的 -->
 <main role="main" class="wrap"> 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        <?php
+        $route = Yii::$app->controller->route;
+        $hideBreadcrumbRoutes = [
+            'battle/index',
+            'battle/view',
+            'figure/index',
+            'figure/view',
+            'media/index',
+            'media/view',
+            'guestbook/index',
+            'site/team',
+        ];
+        $showBreadcrumbs = !in_array($route, $hideBreadcrumbRoutes, true);
+        ?>
+        <?php if ($showBreadcrumbs): ?>
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        <?php endif; ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
