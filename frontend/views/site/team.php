@@ -298,63 +298,55 @@ function renderAssignmentLinks($studentId, $assignments) {
                 <div class="project-links-section">
                     <h3>项目相关资料</h3>
                     <div class="links-grid">
-                        <a href="<?= Url::to('@web/data/team/实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-1">
 
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-1">
                             <div class="link-text">
                                 <span class="link-title">1 需求文档</span>
                             </div>
                         </a>
 
                         <a href="<?= Url::to('@web/data/team/实验楼C4_设计文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_设计文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-2">
-
                             <div class="link-text">
                                 <span class="link-title">2 设计文档</span>
-
                             </div>
                         </a>
 
                         <a href="<?= Url::to('@web/data/team/实验楼C4_实现文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_实现文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-3">
-
                             <div class="link-text">
                                 <span class="link-title">3 实现文档</span>
                             </div>
                         </a>
 
                         <a href="<?= Url::to('@web/data/team/实验楼C4_用户手册（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_用户手册（2313312_2313557_2310500_2314003）.pdf" class="project-link link-4">
-
                             <div class="link-text">
                                 <span class="link-title">4 用户手册</span>
                             </div>
                         </a>
 
                         <a href="<?= Url::to('@web/data/team/实验楼C4_部署文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_部署文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-5">
-
                             <div class="link-text">
                                 <span class="link-title">5 部署文档</span>
                             </div>
                         </a>
 
                         <a href="<?= Url::to('@web/data/team/实验楼C4_项目展示（2313312_2313557_2310500_2314003）.pptx', true) ?>" download="实验楼C4_项目展示（2313312_2313557_2310500_2314003）.pptx" class="project-link link-6">
-
                             <div class="link-text">
                                 <span class="link-title">6 项目展示PPT</span>
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-7">
-                       
+
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_录屏讲解（2313312_2313557_2310500_2314003）.mp4', true) ?>" download="实验楼C4_录屏讲解（2313312_2313557_2310500_2314003）.mp4" class="project-link link-7">
                             <div class="link-text">
-                                <span class="link-title">7 录屏讲解</span>
+                                <span class="link-title">7 项目讲解（录屏）</span>
                             </div>
                         </a>
-                        
+
                         <a href="https://github.com/Scarlettyan6/yii/tree/%E7%BB%88" target="_blank" class="project-link link-8">
-                    
                             <div class="link-text">
                                 <span class="link-title">8 源码仓库</span>
                             </div>
                         </a>
-                    </div>
+</div>
                 </div>
             </div>
         </div>
