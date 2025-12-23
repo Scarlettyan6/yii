@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\TimelineEvent */
 
-$this->title = 'Update Timeline Event: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Timeline Events', 'url' => ['index']];
+$this->title = '编辑时间线事件: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => '历史纪年', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '编辑';
 ?>
 <div class="timeline-event-update">
 

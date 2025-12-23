@@ -55,11 +55,11 @@ class GuestbookMessage extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nickname' => 'Nickname',
-            'content' => 'Content',
-            'is_approved' => 'Is Approved',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'nickname' => '昵称',
+            'content' => '留言内容',
+            'is_approved' => '审核状态',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 }

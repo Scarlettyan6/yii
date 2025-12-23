@@ -20,6 +20,18 @@ class WarRecord extends ActiveRecord
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'dataset_id' => '数据集ID',
+            'row_index' => '行索引',
+            'data_json' => '数据(JSON)',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+        ];
+    }
+
     public function getDataset()
     {
         return $this->hasOne(WarDataset::class, ['id' => 'dataset_id']);

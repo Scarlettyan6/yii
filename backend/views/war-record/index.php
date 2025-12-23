@@ -76,7 +76,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete}',
+                'buttons' => [
+                    'delete' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                            'title' => '删除',
+                            'data-confirm' => '确定要删除这条内容吗？此操作不可恢复。',
+                            'data-method' => 'post',
+                        ]);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 

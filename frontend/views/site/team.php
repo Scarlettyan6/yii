@@ -53,17 +53,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
                             <div class="assignment-links">
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业一</span>
+                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业1（2313312_杜子妍）.zip" 
+                                download="作业1（2313312_杜子妍）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业1</span>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业二</span>
+                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业2（2313312_杜子妍）.zip" 
+                                download="作业2（2313312_杜子妍）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业2</span>  </a>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业三</span>
+                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业3（2313312_杜子妍）.zip" 
+                                download="作业3（2313312_杜子妍）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业3</span>
                                 </a>
                             </div>
                         </div>
@@ -96,17 +99,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
                             <div class="assignment-links">
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-word"></i>
-                                    <span>作业一</span>
+                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业1（2313557_姚智博）.zip" 
+                                download="作业1（2313557_姚智博）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业1</span>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业二</span>
+                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业2（2313557_姚智博）.zip" 
+                                download="作业2（2313557_姚智博）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业2</span>  </a>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业三</span>
+                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业3（2313557_姚智博）.zip" 
+                                download="作业3（2313557_姚智博）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业3</span>
                                 </a>
                             </div>
                         </div>
@@ -139,17 +145,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
                            <div class="assignment-links">
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业一</span>
+                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业1（2310500_谢闻星）.zip" 
+                                download="作业1（2310500_谢闻星）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业1</span>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业二</span>
+                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业2（2310500_谢闻星）.zip" 
+                                download="作业2（2310500_谢闻星）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业2</span>  </a>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业三</span>
+                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业3（2314003_谭诗洋）.zip" 
+                                download="作业3（2314003_谭诗洋）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业3</span>
                                 </a>
                             </div>
                         </div>
@@ -182,17 +191,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
                             <div class="assignment-links">
-                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/实验二.docx" target="_blank" class="assignment-link">
-                                    <i class="fas fa-file-word"></i>
-                                    <span>作业一</span>
+                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业1（2314003_谭诗洋）.zip" 
+                                download="作业1（2314003_谭诗洋）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业1</span>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业二</span>
+                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业2（2314003_谭诗洋）.zip" 
+                                download="作业2（2314003_谭诗洋）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业2</span>
                                 </a>
-                                <a href="#" class="assignment-link">
-                                    <i class="fas fa-file-alt"></i>
-                                    <span>作业三</span>
+                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业3（2314003_谭诗洋）.zip" 
+                                download="作业3（2314003_谭诗洋）.zip" class="assignment-link">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span>作业3</span>
                                 </a>
                             </div>
                         </div>
@@ -303,37 +315,37 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="project-links-section">
                     <h3>项目相关资料</h3>
                     <div class="links-grid">
-                        <a href="#" class="project-link link-1">
-                         
+                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业1——需求文档.pdf" download="团队作业1——需求文档.pdf" class="project-link link-1">
+
                             <div class="link-text">
                                 <span class="link-title">1 需求文档</span>
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-2">
-                         
+
+                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业2——设计文档.pdf" download="团队作业2——设计文档.pdf" class="project-link link-2">
+
                             <div class="link-text">
                                 <span class="link-title">2 设计文档</span>
-                  
+
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-3">
-                     
+
+                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业3——实现文档.pdf" download="团队作业3——实现文档.pdf" class="project-link link-3">
+
                             <div class="link-text">
                                 <span class="link-title">3 实现文档</span>
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-4">
-                    
+
+                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业4——用户手册.pdf" download="团队作业4——用户手册.pdf" class="project-link link-4">
+
                             <div class="link-text">
                                 <span class="link-title">4 用户手册</span>
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-5">
-                          
+
+                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业5——部署文档.pdf" download="团队作业5——部署文档.pdf" class="project-link link-5">
+
                             <div class="link-text">
                                 <span class="link-title">5 部署文档</span>
                             </div>
@@ -540,7 +552,7 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 
 .info-block h4 i {
-    color: #8b4513;
+    color:rgb(139, 27, 19);
     font-size: 1rem;
 }
 
@@ -563,7 +575,7 @@ $this->params['breadcrumbs'][] = $this->title;
     position: absolute;
     left: 0;
     top: 11px;
-    color: #8b4513;
+    color:rgb(139, 33, 19);
     font-size: 0.85rem;
 }
 
@@ -608,15 +620,15 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 
 .assignment-link:hover {
-    background: #8b4513;
+    background:rgb(139, 39, 19);
     color: white;
-    border-color: #8b4513;
+    border-color:rgb(139, 37, 19);
     transform: translateX(5px);
 }
 
 .assignment-link i {
     font-size: 1.1rem;
-    color: #8b4513;
+    color:rgb(139, 27, 19);
     transition: color 0.3s ease;
 }
 
@@ -729,7 +741,7 @@ $this->params['breadcrumbs'][] = $this->title;
 .detail-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #8b4513 0%, #6d5d3b 100%);
+    background: linear-gradient(135deg,rgb(139, 31, 19) 0%,rgb(109, 59, 59) 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -773,7 +785,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #8b4513 0%, #a0612c 100%);
+    background: linear-gradient(90deg,rgb(139, 37, 19) 0%,rgb(160, 57, 44) 100%);
     border-radius: 4px;
     transition: width 1s ease;
 }
@@ -825,15 +837,15 @@ $this->params['breadcrumbs'][] = $this->title;
 }
 
 .feature-item:hover {
-    background: #8b4513;
+    background:rgb(139, 33, 19);
     color: white;
-    border-color: #8b4513;
+    border-color:rgb(139, 31, 19);
     transform: translateY(-3px);
 }
 
 .feature-item i {
     font-size: 1.5rem;
-    color: #8b4513;
+    color:rgb(139, 21, 19);
     transition: color 0.3s ease;
 }
 
@@ -876,7 +888,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 .project-link i {
     font-size: 2.5rem;
-    color: #8b4513;
+    color:rgb(139, 31, 19);
     transition: all 0.3s ease;
 }
 
@@ -896,7 +908,7 @@ $this->params['breadcrumbs'][] = $this->title;
 .link-desc {
     display: block;
     font-size: 0.85rem;
-    color: #8a6b52;
+    color:rgb(138, 85, 82);
 }
 
 /* 链接悬停统一使用专题首页红色系 */

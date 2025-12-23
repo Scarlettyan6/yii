@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\WarDataset */
 
-$this->title = 'Update War Dataset: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'War Datasets', 'url' => ['index']];
+$this->title = '编辑战争数据集: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => '战争数据集', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '编辑';
 ?>
 <div class="war-dataset-update">
 

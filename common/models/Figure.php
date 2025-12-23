@@ -45,13 +45,13 @@ class Figure extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'biography' => 'Biography',
-            'achievements' => 'Achievements',
-            'cover_image_url' => 'Cover Image Url',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'deleted_at' => 'Deleted At',
+            'name' => '姓名',
+            'biography' => '生平',
+            'achievements' => '成就',
+            'cover_image_url' => '封面图片',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+            'deleted_at' => '删除时间',
         ];
     }
 

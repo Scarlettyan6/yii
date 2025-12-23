@@ -70,15 +70,15 @@ class MediaResource extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'type' => 'Type',
-            'url' => 'Url',
-            'path' => 'Path',
-            'description' => 'Description',
-            'linkable_type' => 'Linkable Type',
-            'linkable_id' => 'Linkable ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'title' => '标题',
+            'type' => '媒体类型',
+            'url' => '链接地址',
+            'path' => '文件路径',
+            'description' => '描述',
+            'linkable_type' => '关联类型',
+            'linkable_id' => '关联ID',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 

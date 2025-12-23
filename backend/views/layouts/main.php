@@ -41,18 +41,19 @@ AppAsset::register($this);
         ['label' => '<i class="glyphicon glyphicon-dashboard"></i> 管理首页', 'url' => ['/site/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-tower"></i> 抗战地标', 'url' => ['/battle/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-user"></i> 抗战英雄', 'url' => ['/figure/index'], 'encode' => false],
+        ['label' => '<i class="glyphicon glyphicon-file"></i> 战争记录', 'url' => ['/war-record/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-time"></i> 历史纪年', 'url' => ['/timeline-event/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-film"></i> 影视档案', 'url' => ['/media-resource/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-envelope"></i> 民众留言', 'url' => ['/guestbook-message/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-star"></i> 首页精选', 'url' => ['/homepage-feature/index'], 'encode' => false],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                '退出登录 (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

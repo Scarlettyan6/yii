@@ -54,18 +54,18 @@ class Battle extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
-            'main_location' => 'Main Location',
-            'main_latitude' => 'Main Latitude',
-            'main_longitude' => 'Main Longitude',
-            'description' => 'Description',
-            'result' => 'Result',
-            'casualties_china' => 'Casualties China',
-            'casualties_japan' => 'Casualties Japan',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => '战役名称',
+            'start_date' => '开始日期',
+            'end_date' => '结束日期',
+            'main_location' => '主要地点',
+            'main_latitude' => '纬度',
+            'main_longitude' => '经度',
+            'description' => '描述',
+            'result' => '结果',
+            'casualties_china' => '中国伤亡',
+            'casualties_japan' => '日本伤亡',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 
