@@ -8,6 +8,7 @@
 */
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\MediaResource;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\MediaResource */
@@ -16,6 +17,9 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Media Resources', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
+
+$typeLabels = MediaResource::typeLabels();
+ksort($typeLabels);
 ?>
 <div class="media-resource-view">
 
@@ -38,7 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
-            'type',
+            [
+                'attribute' => 'type',
+                'value' => $typeLabels[$model->type] ?? $model->type,
+            ],
             'url:url',
             'path',
             'description:ntext',

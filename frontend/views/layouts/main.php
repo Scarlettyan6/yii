@@ -14,11 +14,22 @@ use common\widgets\Alert;
 use yii\helpers\Html;
 
 // --- 修正点 1: 引入正确的命名空间 ---
-use yii\bootstrap\Nav;       // <-- 不是 bootstrap5
-use yii\bootstrap\NavBar;    // <-- 不是 bootstrap5
+use yii\bootstrap\Nav;       
+use yii\bootstrap\NavBar;   
 use yii\widgets\Breadcrumbs; // <-- Breadcrumbs 在 yii\widgets 里
 
 AppAsset::register($this);
+
+// Build backend entry URL for local “advanced” style layout:
+// frontend:  /<project>/frontend/web
+// backend:   /<project>/backend/web
+$backendBaseUrl = Yii::$app->request->baseUrl;
+if (str_ends_with($backendBaseUrl, '/frontend/web')) {
+    $backendBaseUrl = substr($backendBaseUrl, 0, -strlen('/frontend/web')) . '/backend/web';
+} elseif (!str_ends_with($backendBaseUrl, '/backend/web')) {
+    $backendBaseUrl = '/backend/web';
+}
+$backendLoginUrl = $backendBaseUrl . '/index.php?r=site/login';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -37,7 +48,7 @@ AppAsset::register($this);
     <?php
     // --- 修正点 2: NavBar::begin() 是正确的 ---
     NavBar::begin([
-        'brandLabel' => '抗战80周年纪念', // 你的网站标题
+        'brandLabel' => '抗战80周年纪念', // 网站标题
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             // 'class' => 'navbar-inverse navbar-fixed-top', // 这是 Bootstrap 3 的深色固定顶部
@@ -46,7 +57,7 @@ AppAsset::register($this);
         ],
     ]);
 
-    // !! 你的横向菜单栏 (这个数组是正确的) !!
+    // !! 横向菜单栏 (这个数组是正确的) !!
     $menuItems = [
         ['label' => '专题首页', 'url' => ['/site/index']],
         ['label' => '时间戳', 'url' => ['/timeline/index']],
@@ -58,7 +69,7 @@ AppAsset::register($this);
         ['label' => '团队介绍', 'url' => ['/site/team']],
         [
             'label' => '<i class="glyphicon glyphicon-cog"></i> 后台管理',
-            'url' => '/yii2025/backend/web/index.php?r=site/login',
+            'url' => $backendLoginUrl,
             'linkOptions' => ['title' => '登录后台管理系统'],
             'encode' => false,
         ],

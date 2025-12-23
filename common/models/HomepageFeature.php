@@ -1,9 +1,6 @@
 <?php
-
 namespace common\models;
-
 use yii\behaviors\TimestampBehavior;
-
 /**
  * This is the model class for table "homepage_feature".
  *
@@ -18,6 +15,9 @@ use yii\behaviors\TimestampBehavior;
  * @property int $created_at
  * @property int $updated_at
  */
+
+
+
 class HomepageFeature extends \yii\db\ActiveRecord
 {
     /**

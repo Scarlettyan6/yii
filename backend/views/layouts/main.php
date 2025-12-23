@@ -16,6 +16,17 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+
+// Build frontend entry URL for local “advanced” style layout:
+// backend:   /<project>/backend/web
+// frontend:  /<project>/frontend/web
+$frontendBaseUrl = Yii::$app->request->baseUrl;
+if (str_ends_with($frontendBaseUrl, '/backend/web')) {
+    $frontendBaseUrl = substr($frontendBaseUrl, 0, -strlen('/backend/web')) . '/frontend/web';
+} elseif (!str_ends_with($frontendBaseUrl, '/frontend/web')) {
+    $frontendBaseUrl = '/frontend/web';
+}
+$frontendHomeUrl = $frontendBaseUrl . '/index.php';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -42,7 +53,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '<i class="glyphicon glyphicon-home"></i> 返回首页', 'url' => '/yii2025/frontend/web/index.php', 'encode' => false, 'linkOptions' => ['title' => '返回网站首页']],
+        ['label' => '<i class="glyphicon glyphicon-home"></i> 返回首页', 'url' => $frontendHomeUrl, 'encode' => false, 'linkOptions' => ['title' => '返回网站首页']],
         ['label' => '<i class="glyphicon glyphicon-dashboard"></i> 管理首页', 'url' => ['/site/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-tower"></i> 抗战地标', 'url' => ['/battle/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-user"></i> 抗战英雄', 'url' => ['/figure/index'], 'encode' => false],

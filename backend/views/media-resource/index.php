@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\MediaResource;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\MediaResourceSearch */
@@ -13,6 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="media-resource-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
+    <?php
+    $typeLabels = MediaResource::typeLabels();
+    ksort($typeLabels);
+    ?>
 
     <p>
         <?= Html::a('新建媒体资源', ['create'], ['class' => 'btn btn-success']) ?>
@@ -37,6 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'type',
                 'label' => '类型',
+                'filter' => $typeLabels,
+                'value' => static function (MediaResource $model) use ($typeLabels): string {
+                    return $typeLabels[$model->type] ?? (string)$model->type;
+                },
             ],
             [
                 'attribute' => 'url',

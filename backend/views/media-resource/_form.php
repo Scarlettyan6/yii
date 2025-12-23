@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\MediaResource;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\MediaResource */
@@ -12,14 +13,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php
+    $typeLabels = MediaResource::typeLabels();
+    ksort($typeLabels);
+    ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label('标题') ?>
 
-    <?= $form->field($model, 'type')->dropDownList([
-        1 => '1',
-        2 => '2',
-        3 => '3',
-        4 => '4'
-    ], ['prompt' => '请选择媒体类型'])->label('媒体类型') ?>
+    <?= $form->field($model, 'type')->dropDownList(
+        $typeLabels,
+        ['prompt' => '请选择媒体类型']
+    )->label('媒体类型') ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true])->label('资源链接') ?>
 
