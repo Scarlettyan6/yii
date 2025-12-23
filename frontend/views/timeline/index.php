@@ -53,7 +53,7 @@ foreach ($events as $e) {
     $date        = $isArray ? ($e['event_date'] ?? null)      : ($e->event_date ?? null);
     $title       = $isArray ? ($e['title'] ?? '')             : ($e->title ?? '');
     $desc        = $isArray ? ($e['description'] ?? '')       : ($e->description ?? '');
-    $cover       = $isArray ? ($e['cover_image_url'] ?? '')   : ($e->cover_image_url ?? '');
+    $cover       = $isArray ? ($e['cover_image_url'] ?? '')   : ($e->getCoverImageUrl() ?? '');
     $importance  = $isArray ? ($e['importance'] ?? 1)         : ($e->importance ?? 1);
 
     $ts   = $date ? strtotime($date) : null;

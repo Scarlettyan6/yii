@@ -67,4 +67,27 @@ class TimelineEvent extends \yii\db\ActiveRecord
             'updated_at' => '更新于',
         ];
     }
+
+    /**
+     * 获取完整的封面图片URL
+     */
+    public function getCoverImageUrl()
+    {
+        if (empty($this->cover_image_url)) {
+            return null;
+        }
+
+        // 如果已经是完整的URL，直接返回
+        if (strpos($this->cover_image_url, 'http') === 0) {
+            return $this->cover_image_url;
+        }
+
+        // 如果以 / 开头，认为是相对于web根目录的路径
+        if (strpos($this->cover_image_url, '/') === 0) {
+            return \Yii::getAlias('@web') . $this->cover_image_url;
+        }
+
+        // 其他情况，直接使用
+        return $this->cover_image_url;
+    }
 }

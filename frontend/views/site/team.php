@@ -1,8 +1,55 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = '我们的团队';
 $this->params['breadcrumbs'][] = $this->title;
+
+// 作业文件配置
+$assignments = [
+    '2313312-杜子妍' => [
+        ['file' => '作业1（2313312_杜子妍）.zip', 'label' => '作业1'],
+        ['file' => '作业2（2313312_杜子妍）.zip', 'label' => '作业2'],
+        ['file' => '作业3（2313312_杜子妍）.zip', 'label' => '作业3'],
+    ],
+    '2313557-姚智博' => [
+        ['file' => '作业1（2313557_姚智博）.zip', 'label' => '作业1'],
+        ['file' => '作业2（2313557_姚智博）.zip', 'label' => '作业2'],
+        ['file' => '作业3（2313557_姚智博）.zip', 'label' => '作业3'],
+    ],
+    '2310500-谢闻星' => [
+        ['file' => '作业1（2310500_谢闻星）.zip', 'label' => '作业1'],
+        ['file' => '作业2（2310500_谢闻星）.zip', 'label' => '作业2'],
+        ['file' => '作业3（2310500_谢闻星）.zip', 'label' => '作业3'],
+    ],
+    '2314003-谭诗洋' => [
+        ['file' => '作业1（2314003_谭诗洋）.zip', 'label' => '作业1'],
+        ['file' => '作业2（2314003_谭诗洋）.zip', 'label' => '作业2'],
+        ['file' => '作业3（2314003_谭诗洋）.zip', 'label' => '作业3'],
+    ],
+    // 可以继续添加其他成员...
+];
+
+// 生成作业链接的辅助函数
+function renderAssignmentLinks($studentId, $assignments) {
+    if (!isset($assignments[$studentId])) {
+        return '';
+    }
+
+    $html = '<div class="assignment-links">';
+    foreach ($assignments[$studentId] as $assignment) {
+        // 使用Yii2的Url::to()方法生成正确的URL路径
+        $filePath = Url::to("@web/data/personal/{$studentId}/{$assignment['file']}", true);
+
+        $html .= '<a href="' . $filePath . '" download="' . $assignment['file'] . '" class="assignment-link">';
+        $html .= '<i class="fas fa-file-archive"></i>';
+        $html .= '<span>' . $assignment['label'] . '</span>';
+        $html .= '</a>';
+    }
+    $html .= '</div>';
+
+    return $html;
+}
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,23 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="info-block assignment-block">
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
-                            <div class="assignment-links">
-                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业1（2313312_杜子妍）.zip" 
-                                download="作业1（2313312_杜子妍）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业1</span>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业2（2313312_杜子妍）.zip" 
-                                download="作业2（2313312_杜子妍）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业2</span>  </a>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2313312-杜子妍/作业3（2313312_杜子妍）.zip" 
-                                download="作业3（2313312_杜子妍）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业3</span>
-                                </a>
-                            </div>
+                            <?= renderAssignmentLinks('2313312-杜子妍', $assignments) ?>
                         </div>
                     </div>
                 </div>
@@ -98,23 +129,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="info-block assignment-block">
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
-                            <div class="assignment-links">
-                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业1（2313557_姚智博）.zip" 
-                                download="作业1（2313557_姚智博）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业1</span>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业2（2313557_姚智博）.zip" 
-                                download="作业2（2313557_姚智博）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业2</span>  </a>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2313557-姚智博/作业3（2313557_姚智博）.zip" 
-                                download="作业3（2313557_姚智博）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业3</span>
-                                </a>
-                            </div>
+                            <?= renderAssignmentLinks('2313557-姚智博', $assignments) ?>
                         </div>
                     </div>
                 </div>
@@ -144,23 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="info-block assignment-block">
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
-                           <div class="assignment-links">
-                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业1（2310500_谢闻星）.zip" 
-                                download="作业1（2310500_谢闻星）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业1</span>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业2（2310500_谢闻星）.zip" 
-                                download="作业2（2310500_谢闻星）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业2</span>  </a>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业3（2310500_谢闻星）.zip" 
-                                download="作业3（2310500_谢闻星）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业3</span>
-                                </a>
-                            </div>
+                            <?= renderAssignmentLinks('2310500-谢闻星', $assignments) ?>
                         </div>
                     </div>
                 </div>
@@ -190,23 +189,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="info-block assignment-block">
                         <h4><i class="fas fa-folder-open"></i> 作业展示</h4>
                         <div class="assignment-content">
-                            <div class="assignment-links">
-                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业1（2314003_谭诗洋）.zip" 
-                                download="作业1（2314003_谭诗洋）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业1</span>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业2（2314003_谭诗洋）.zip" 
-                                download="作业2（2314003_谭诗洋）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业2</span>
-                                </a>
-                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业3（2314003_谭诗洋）.zip" 
-                                download="作业3（2314003_谭诗洋）.zip" class="assignment-link">
-                                    <i class="fas fa-file-archive"></i>
-                                    <span>作业3</span>
-                                </a>
-                            </div>
+                            <?= renderAssignmentLinks('2314003-谭诗洋', $assignments) ?>
                         </div>
                     </div>
                 </div>
@@ -315,14 +298,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="project-links-section">
                     <h3>项目相关资料</h3>
                     <div class="links-grid">
-                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业1——需求文档.pdf" download="团队作业1——需求文档.pdf" class="project-link link-1">
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_需求文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-1">
 
                             <div class="link-text">
                                 <span class="link-title">1 需求文档</span>
                             </div>
                         </a>
 
-                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业2——设计文档.pdf" download="团队作业2——设计文档.pdf" class="project-link link-2">
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_设计文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_设计文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-2">
 
                             <div class="link-text">
                                 <span class="link-title">2 设计文档</span>
@@ -330,29 +313,29 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </a>
 
-                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业3——实现文档.pdf" download="团队作业3——实现文档.pdf" class="project-link link-3">
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_实现文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_实现文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-3">
 
                             <div class="link-text">
                                 <span class="link-title">3 实现文档</span>
                             </div>
                         </a>
 
-                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业4——用户手册.pdf" download="团队作业4——用户手册.pdf" class="project-link link-4">
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_用户手册（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_用户手册（2313312_2313557_2310500_2314003）.pdf" class="project-link link-4">
 
                             <div class="link-text">
                                 <span class="link-title">4 用户手册</span>
                             </div>
                         </a>
 
-                        <a href="/yii2025/frontend/web/documents/团队作业/团队作业5——部署文档.pdf" download="团队作业5——部署文档.pdf" class="project-link link-5">
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_部署文档（2313312_2313557_2310500_2314003）.pdf', true) ?>" download="实验楼C4_部署文档（2313312_2313557_2310500_2314003）.pdf" class="project-link link-5">
 
                             <div class="link-text">
                                 <span class="link-title">5 部署文档</span>
                             </div>
                         </a>
-                        
-                        <a href="#" class="project-link link-6">
-                   
+
+                        <a href="<?= Url::to('@web/data/team/实验楼C4_项目展示（2313312_2313557_2310500_2314003）.pptx', true) ?>" download="实验楼C4_项目展示（2313312_2313557_2310500_2314003）.pptx" class="project-link link-6">
+
                             <div class="link-text">
                                 <span class="link-title">6 项目展示PPT</span>
                             </div>
@@ -365,7 +348,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         </a>
                         
-                        <a href="#" class="project-link link-8">
+                        <a href="https://github.com/Scarlettyan6/yii/tree/%E7%BB%88" target="_blank" class="project-link link-8">
                     
                             <div class="link-text">
                                 <span class="link-title">8 源码仓库</span>
