@@ -108,6 +108,36 @@ $this->title = '抗日战争胜利80周年纪念 - 后台管理';
             </div>
         </div>
 
+        <!-- 新增行：重要会议模块 -->
+        <div class="row" style="margin-bottom: 40px;">
+            <div class="col-lg-6">
+                <div class="management-card" style="background: white; border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid #C00; transition: all 0.3s ease; height: 240px; display: flex; flex-direction: column;">
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #C00; margin-bottom: 20px; font-size: 1.4em;">
+                            <i class="glyphicon glyphicon-briefcase" style="font-size: 1.5em; margin-right: 10px;"></i> 重要会议管理
+                        </h2>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">维护专题首页的重大会议信息，包含标题、时间、地点、封面图和外链，支撑前台展示。</p>
+                    </div>
+                    <a class="btn" style="border-radius: 25px; padding: 12px; font-weight: bold; background: linear-gradient(45deg, #DC143C, #B22222); color: white;" href="?r=important-meeting/index">
+                        <i class="glyphicon glyphicon-arrow-right"></i> 管理会议
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="management-card" style="background: white; border-radius: 15px; padding: 30px; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid #C00; transition: all 0.3s ease; height: 240px; display: flex; flex-direction: column;">
+                    <div style="flex-grow: 1;">
+                        <h2 style="color: #C00; margin-bottom: 20px; font-size: 1.4em;">
+                            <i class="glyphicon glyphicon-list-alt" style="font-size: 1.5em; margin-right: 10px;"></i> 会议亮点管理
+                        </h2>
+                        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">为会议添加亮点/议题要点，支持前台折叠展示，丰富内容细节。</p>
+                    </div>
+                    <a class="btn" style="border-radius: 25px; padding: 12px; font-weight: bold; background: linear-gradient(45deg, #DC143C, #B22222); color: white;" href="?r=important-meeting-highlight/index">
+                        <i class="glyphicon glyphicon-arrow-right"></i> 管理亮点
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <!-- 第三行：战争数据集管理 -->
         <div class="row" style="margin-bottom: 40px;">
             <div class="col-lg-12">
