@@ -1,5 +1,11 @@
-<?php
 
+
+<?php
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the important meeting index view for backend management of anti-Japanese war important meetings.
+*/
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;

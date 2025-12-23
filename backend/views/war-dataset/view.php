@@ -1,5 +1,11 @@
-<?php
 
+
+<?php
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+* This is the war dataset view for backend management of anti-Japanese war data.
+*/
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 

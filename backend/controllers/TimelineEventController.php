@@ -1,6 +1,11 @@
 <?php
-
 namespace backend\controllers;
+
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+* This is the TimelineEvent controller for backend management of anti-Japanese war timeline.
+*/
 
 use Yii;
 use common\models\TimelineEvent;

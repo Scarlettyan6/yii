@@ -2,6 +2,11 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+* This is the WarDataAsset for anti-Japanese war data visualization.
+*/
 
 class WarDataAsset extends AssetBundle
 {

@@ -2,6 +2,11 @@
 
 namespace backend\models;
 
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+*/
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\WarRecord;

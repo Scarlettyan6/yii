@@ -1,4 +1,9 @@
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 谭诗洋, 2314003
+* This is the layout of backend management interface.
+*/
 
 /* @var $this \yii\web\View */
 /* @var $content string */

@@ -1,4 +1,9 @@
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the figure create view for backend management of historical figures column.
+*/
 
 use yii\helpers\Html;
 

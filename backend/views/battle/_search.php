@@ -1,4 +1,9 @@
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the battle search form partial for backend management of anti-Japanese war landmarks.
+*/
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;

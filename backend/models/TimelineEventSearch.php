@@ -1,6 +1,11 @@
 <?php
-
 namespace backend\models;
+
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+* This is the TimelineEvent search model for backend management of anti-Japanese war timeline.
+*/
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

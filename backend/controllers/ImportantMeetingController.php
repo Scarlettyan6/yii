@@ -1,6 +1,11 @@
 <?php
-
 namespace backend\controllers;
+
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the ImportantMeeting controller for backend management of anti-Japanese war important meetings.
+*/
 
 use Yii;
 use common\models\ImportantMeeting;

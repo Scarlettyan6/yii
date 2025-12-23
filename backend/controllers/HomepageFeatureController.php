@@ -1,6 +1,11 @@
 <?php
-
 namespace backend\controllers;
+
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the HomepageFeature controller for backend management of homepage features.
+*/
 
 use Yii;
 use common\models\HomepageFeature;

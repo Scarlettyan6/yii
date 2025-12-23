@@ -1,5 +1,11 @@
-<?php
 
+
+<?php
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the media resource create view for backend management of film and television information.
+*/
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */

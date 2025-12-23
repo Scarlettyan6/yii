@@ -1,4 +1,10 @@
+
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the homepage feature create view for backend management.
+*/
 
 use yii\helpers\Html;
 

@@ -2,6 +2,11 @@
 
 namespace backend\controllers;
 
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+*/
+
 use Yii;
 use common\models\MediaResource;
 use backend\models\MediaResourceSearch;

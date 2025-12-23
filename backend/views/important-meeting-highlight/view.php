@@ -1,4 +1,10 @@
+
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the important meeting highlight view for backend management of anti-Japanese war important meeting highlights.
+*/
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;

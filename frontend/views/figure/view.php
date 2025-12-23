@@ -1,5 +1,12 @@
+
 <?php
 use yii\helpers\Html;
+
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the historical figures column page.
+*/
 
 /* @var $figure common\models\Figure */
 

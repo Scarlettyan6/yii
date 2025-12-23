@@ -1,4 +1,10 @@
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the anti-Japanese war landmarks page.
+*/
+
 /* @var $this yii\web\View */
 /* @var $battles common\models\Battle[] */
 /* @var $battlePoints array */

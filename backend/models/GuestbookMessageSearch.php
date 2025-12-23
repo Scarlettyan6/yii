@@ -2,6 +2,13 @@
 
 namespace backend\models;
 
+/*
+* Team: 实验楼C4
+* Coding by 谭诗洋, 2314003
+* This is the GuestbookMessage search model for backend management of message board/guestbook.
+*/
+
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\GuestbookMessage;

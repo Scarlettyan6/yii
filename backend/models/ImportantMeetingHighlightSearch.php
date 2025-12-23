@@ -1,6 +1,11 @@
 <?php
-
 namespace backend\models;
+
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the ImportantMeetingHighlight search model for backend management of anti-Japanese war important meeting highlights.
+*/
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

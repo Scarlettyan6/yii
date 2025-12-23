@@ -1,5 +1,11 @@
+
 <?php
 use yii\helpers\Html;
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the film and television information page.
+*/
 
 /* @var $model common\models\MediaResource */
 

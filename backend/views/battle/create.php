@@ -1,5 +1,11 @@
 <?php
 
+/*
+* Team: 实验楼C4
+* Coding by 杜子妍, 2313312
+* This is the battle create view for backend management of anti-Japanese war landmarks.
+*/
+
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */

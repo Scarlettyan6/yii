@@ -1,6 +1,11 @@
 <?php
-
 namespace frontend\controllers;
+
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the Figure controller for historical figures column frontend.
+*/
 
 use yii\web\Controller;
 use yii\data\ActiveDataProvider;

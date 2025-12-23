@@ -2,6 +2,12 @@
 
 namespace backend\models;
 
+/*
+* Team: 实验楼C4
+* Coding by 谢闻星, 2310500
+* This is the MediaResource search model for backend management of film and television information.
+*/
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\MediaResource;

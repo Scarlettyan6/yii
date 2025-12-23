@@ -1,6 +1,12 @@
 <?php
 namespace frontend\controllers;
 
+/*
+* Team: 实验楼C4
+* Coding by 姚智博, 2313557
+* This is the Timeline controller for anti-Japanese war timeline frontend.
+*/
+
 use yii\web\Controller;
 use common\models\TimelineEvent;
 

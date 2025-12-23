@@ -1,4 +1,9 @@
 <?php
+/*
+* Team: 实验楼C4
+* Coding by 谭诗洋, 2314003
+* This is the guestbook message index view for backend management of message board/guestbook.
+*/
 
 use yii\helpers\Html;
 use yii\grid\GridView;
