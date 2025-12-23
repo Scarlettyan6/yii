@@ -47,12 +47,8 @@ class BattleController extends Controller
             throw new NotFoundHttpException('您所查找的战役不存在。');
         }
 
-        // 假设在 Battle.php 中定义了 getMapMarkers()
-        $markers = method_exists($battle, 'getMapMarkers') ? $battle->getMapMarkers()->all() : [];
-
         return $this->render('view', [
             'battle' => $battle,
-            'markers' => $markers,
         ]);
     }
 }

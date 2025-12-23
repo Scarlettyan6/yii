@@ -68,9 +68,4 @@ class Battle extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
         ];
     }
-
-    public function getMapMarkers()
-    {
-        return $this->hasMany(MapMarker::class, ['battle_id' => 'id']);
-    }
 }

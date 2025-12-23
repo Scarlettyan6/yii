@@ -54,14 +54,4 @@ class Figure extends \yii\db\ActiveRecord
             'deleted_at' => '删除时间',
         ];
     }
-
-    public function getFigureBattles()
-    {
-        return $this->hasMany(FigureBattle::class, ['figure_id' => 'id']);
-    }
-
-    public function getBattles()
-    {
-        return $this->hasMany(Battle::class, ['id' => 'battle_id'])->via('figureBattles');
-    }
 }

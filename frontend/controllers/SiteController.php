@@ -18,8 +18,6 @@ use frontend\models\ResendVerificationEmailForm;
 
 use common\models\TimelineEvent;
 use common\models\Battle;
-use common\models\Statistic;
-use common\models\StatisticCategory;
 use common\models\Figure;
 use common\models\MediaResource;
 use common\models\GuestbookMessage;
@@ -115,39 +113,33 @@ class SiteController extends Controller
             ->asArray()
             ->all();
 
-        // 3. 抗战数据
-        $keyStats = Statistic::find()
-            ->where(['category_id' => 1])
-            ->orderBy(['display_order' => SORT_ASC])
-            ->all();
-
-        // 4. 人物专栏
+        // 3. 人物专栏
         $featuredFigures = Figure::find()
             ->orderBy('RAND()')
             ->limit(6)
             ->all();
 
-        // 5. 影视信息
+        // 4. 影视信息
         $featuredMedia = MediaResource::find()
             ->where(['type' => 4])
             ->orderBy(['id' => SORT_DESC])
             ->limit(4)
             ->all();
 
-        // 6. 留言板精选
+        // 5. 留言板精选
         $featuredMessages = GuestbookMessage::find()
             ->where(['is_approved' => true])
             ->orderBy(['created_at' => SORT_DESC])
             ->limit(3)
             ->all();
 
-        // 7. 专题首页内容
+        // 6. 专题首页内容
         $homepageFeatures = HomepageFeature::find()
             ->where(['is_active' => true])
             ->orderBy(['display_order' => SORT_ASC, 'id' => SORT_DESC])
             ->all();
 
-        // 8. 重要会议列表
+        // 7. 重要会议列表
         $importantMeetings = ImportantMeeting::find()
             ->where(['is_active' => true])
             ->with(['highlights'])
@@ -155,11 +147,10 @@ class SiteController extends Controller
             ->limit(4)
             ->all();
 
-        // 9. 渲染视图
+        // 8. 渲染视图
         return $this->render('index', [
             'featuredEvents' => $featuredEvents,
             'battlesForMap' => $battlesForMap,
-            'keyStats' => $keyStats,
             'featuredFigures' => $featuredFigures,
             'featuredMedia' => $featuredMedia,
             'featuredMessages' => $featuredMessages,

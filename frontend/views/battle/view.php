@@ -1,7 +1,6 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $battle common\models\Battle */
-/* @var $markers array */
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -37,15 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]) ?>
-
-    <?php if (!empty($markers)): ?>
-        <h3>相关标注</h3>
-        <ul>
-            <?php foreach ($markers as $marker): ?>
-                <li><?= Html::encode($marker->title ?? ($marker->name ?? '标注')) ?> — <?= Html::encode($marker->description ?? '') ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
 
     <p>
         <?= Html::a('返回列表', ['index'], ['class' => 'btn btn-default']) ?>
