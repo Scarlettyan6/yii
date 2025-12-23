@@ -24,6 +24,7 @@ use common\models\Figure;
 use common\models\MediaResource;
 use common\models\GuestbookMessage;
 use common\models\HomepageFeature;
+use common\models\ImportantMeeting;
 
 /**
  * Site controller
@@ -146,7 +147,15 @@ class SiteController extends Controller
             ->orderBy(['display_order' => SORT_ASC, 'id' => SORT_DESC])
             ->all();
 
-        // 8. 渲染视图
+        // 8. 重要会议列表
+        $importantMeetings = ImportantMeeting::find()
+            ->where(['is_active' => true])
+            ->with(['highlights'])
+            ->orderBy(['display_order' => SORT_ASC, 'meeting_date' => SORT_DESC, 'id' => SORT_DESC])
+            ->limit(4)
+            ->all();
+
+        // 9. 渲染视图
         return $this->render('index', [
             'featuredEvents' => $featuredEvents,
             'battlesForMap' => $battlesForMap,
@@ -155,6 +164,7 @@ class SiteController extends Controller
             'featuredMedia' => $featuredMedia,
             'featuredMessages' => $featuredMessages,
             'homepageFeatures' => $homepageFeatures,
+            'importantMeetings' => $importantMeetings,
         ]);
     }
 

@@ -53,7 +53,7 @@ AppAsset::register($this);
         [
             'label' => '<i class="glyphicon glyphicon-cog"></i> 后台管理',
             'url' => '/yii2025/backend/web/index.php?r=site/login',
-            'linkOptions' => ['target' => '_blank', 'title' => '登录后台管理系统'],
+            'linkOptions' => ['title' => '登录后台管理系统'],
             'encode' => false,
         ],
     ];

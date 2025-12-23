@@ -37,7 +37,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '<i class="glyphicon glyphicon-home"></i> 返回首页', 'url' => '/yii2025/frontend/web/index.php', 'encode' => false, 'linkOptions' => ['target' => '_blank', 'title' => '返回网站首页']],
+        ['label' => '<i class="glyphicon glyphicon-home"></i> 返回首页', 'url' => '/yii2025/frontend/web/index.php', 'encode' => false, 'linkOptions' => ['title' => '返回网站首页']],
         ['label' => '<i class="glyphicon glyphicon-dashboard"></i> 管理首页', 'url' => ['/site/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-tower"></i> 抗战地标', 'url' => ['/battle/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-user"></i> 抗战英雄', 'url' => ['/figure/index'], 'encode' => false],
@@ -46,18 +46,25 @@ AppAsset::register($this);
         ['label' => '<i class="glyphicon glyphicon-film"></i> 影视档案', 'url' => ['/media-resource/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-envelope"></i> 民众留言', 'url' => ['/guestbook-message/index'], 'encode' => false],
         ['label' => '<i class="glyphicon glyphicon-star"></i> 首页精选', 'url' => ['/homepage-feature/index'], 'encode' => false],
+        [
+            'label' => '<i class="glyphicon glyphicon-briefcase"></i> 重要会议',
+            'encode' => false,
+            'items' => [
+                ['label' => '会议列表', 'url' => ['/important-meeting/index'], 'encode' => false],
+                ['label' => '会议亮点', 'url' => ['/important-meeting-highlight/index'], 'encode' => false],
+            ],
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                '退出登录 (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = [
+            'label' => '<i class="glyphicon glyphicon-user"></i> ' . Html::encode(Yii::$app->user->identity->username),
+            'encode' => false,
+            'items' => [
+                ['label' => '退出登录', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+            ],
+        ];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
