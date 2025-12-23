@@ -14,6 +14,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a('返回列表', ['index'], ['class' => 'btn btn-default']) ?>
+    </p>
+
     <?= $this->render('_form', [
         'model' => $model,
         'meetingList' => $meetingList,
