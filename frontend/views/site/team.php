@@ -155,8 +155,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <i class="fas fa-file-archive"></i>
                                     <span>作业2</span>  </a>
                                 </a>
-                                <a href="/yii2025/frontend/web/documents/2314003-谭诗洋/作业3（2314003_谭诗洋）.zip" 
-                                download="作业3（2314003_谭诗洋）.zip" class="assignment-link">
+                                <a href="/yii2025/frontend/web/documents/2310500-谢闻星/作业3（2310500_谢闻星）.zip" 
+                                download="作业3（2310500_谢闻星）.zip" class="assignment-link">
                                     <i class="fas fa-file-archive"></i>
                                     <span>作业3</span>
                                 </a>
