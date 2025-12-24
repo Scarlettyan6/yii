@@ -24,8 +24,28 @@ $pagination = $dataProvider->getPagination();
             margin-bottom: 25px;
             letter-spacing: 0.5px;
         }
+        .figure-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: flex-start;
+        }
         .figure-card-wrapper {
-            margin-bottom: 20px;
+            margin-bottom: 0;
+            width: 260px;
+            flex: 0 0 260px;
+        }
+        @media (max-width: 991px) {
+            .figure-card-wrapper {
+                width: 48%;
+                flex: 0 0 48%;
+            }
+        }
+        @media (max-width: 640px) {
+            .figure-card-wrapper {
+                width: 100%;
+                flex: 0 0 100%;
+            }
         }
         .figure-card {
             border: 1px solid rgba(182, 90, 46, 0.12);
@@ -34,6 +54,9 @@ $pagination = $dataProvider->getPagination();
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: #fffdf9;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
         }
         .figure-card:hover {
             transform: translateY(-5px);
@@ -42,17 +65,35 @@ $pagination = $dataProvider->getPagination();
         .figure-card__img-wrap {
             background: #f9eee1;
             padding: 12px;
+            height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .figure-card__img {
             border-radius: 6px;
-            max-height: 260px;
+            display: block;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
             margin: 0 auto;
+        }
+        .figure-card .caption {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 12px 10px 16px;
         }
         .figure-card__title {
             color: #b6401a;
             font-weight: 700;
             margin: 10px 0 6px;
+            min-height: 48px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .btn-figure {
             background: linear-gradient(135deg, #d55b2a 0%, #b6401a 100%);
@@ -84,16 +125,16 @@ $pagination = $dataProvider->getPagination();
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="row">
+    <div class="figure-grid">
         <?php foreach ($figures as $figure): ?>
-            <div class="col-sm-6 col-md-3 figure-card-wrapper">
+            <div class="figure-card-wrapper">
                 <div class="thumbnail text-center figure-card">
                     <?php
                     $imageUrl = $figure->cover_image_url ?: 'https://via.placeholder.com/300x300?text=Figure';
                     ?>
                     <a href="<?= Html::encode(\yii\helpers\Url::to(['view', 'id' => $figure->id])) ?>">
                         <div class="figure-card__img-wrap">
-                            <img src="<?= Html::encode($imageUrl) ?>" alt="<?= Html::encode($figure->name) ?>" class="img-responsive figure-card__img">
+                            <img src="<?= Html::encode($imageUrl) ?>" alt="<?= Html::encode($figure->name) ?>" class="figure-card__img">
                         </div>
                     </a>
                     <div class="caption">

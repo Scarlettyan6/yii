@@ -1,0 +1,34 @@
+[33m72bb8c7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m终[m[33m, [m[1;31morigin/终[m[33m)[m add 录屏讲解视频
+[33m672fc4c[m chore: track mp4 via git lfs
+[33m142c42d[m PPT上传
+[33md88db26[m 加入小组作业的PPT，录屏大太了就不在仓库里放了
+[33m6a14b6f[m 清理HomepageFeature命名空间错误
+[33m1688e74[m 注释
+[33m9193894[m 实现文档添加
+[33mf865545[m 文件+数据库
+[33m64c8f81[m 删除冗余代码和冗余表
+[33mcaa4e53[m 后台返回按键的小修改
+[33m6b56d60[m 后台的管理首页进一步优化
+[33m3080a25[m 后台返回列表按钮添加
+[33m4955c8a[m 专题首页进一步增加功能
+[33m6baf9ed[m 重新优化合并代码
+[33m193a5dd[m 2314003-1
+[33m5eea0c9[m[33m ([m[1;31morigin/f[m[33m, [m[1;31morigin/1222[m[33m)[m 2314003
+[33m6a3d287[m 进一步优化
+[33m61972c2[m 四个人合并的项目
+[33mf1270ba[m Merge remote-tracking branch 'origin/main' into final
+[33m47b816c[m Merge remote-tracking branch 'origin/main' into final
+[33m57e2935[m 合并了三个人的代码
+[33m056b439[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m update: fix war csv display and assets
+[33ma676911[m Merge pull request #1 from Scarlettyan6/Yzb
+[33mb947a87[m[33m ([m[1;31morigin/Yzb[m[33m)[m Add war_datasets.php for war casualty configurations
+[33m5fe7f28[m Merge remote-tracking branch 'origin/2314003' into final
+[33mf7c0da7[m Merge remote-tracking branch 'origin/master' into final  commit.
+[33me165bdc[m[33m ([m[1;31morigin/lab5[m[33m)[m betty  version
+[33m0362394[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m 已修复前端问题
+[33me75cfde[m[33m ([m[1;31morigin/2314003[m[33m, [m[1;32m2314003[m[33m)[m 留言板以及团队介绍
+[33mf6d14fd[m 人物与影视基本完成,前端卡片受图片大小影响从而不一致
+[33m3c6c8d1[m readme
+[33me33cfec[m Merge remote-tracking branch 'origin/master'
+[33m6cd3b29[m Initial commit: 项目基本框架
+[33m7066de1[m Initial commit
