@@ -10,6 +10,7 @@ $this->registerCss("
     html, body {
         height: 100%;
         overflow-y: hidden;
+        padding-top: 32px;
     }
 ");
 

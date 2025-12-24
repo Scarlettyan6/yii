@@ -16,12 +16,12 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 
-  /* 把 container 自带的上、下间距吃掉，让黑色区域紧贴红色栏 */
-  margin-top: -90px;   /* 如果还觉得上面有缝，可以再改成 -30 / -40 试试 */
+  /* 为固定导航栏留出空间，避免遮挡 */
+  margin-top: 70px;   /* 导航栏固定后，为header留出足够空间 */
   margin-bottom: -50px;
 
-  /* 高度至少撑满视口剩余空间（顶部红栏大概 80px） */
-  min-height: calc(100vh - 40px);
+  /* 高度至少撑满视口剩余空间（顶部导航栏52px + header空间） */
+  min-height: calc(100vh - 52px);
 
   background:
     radial-gradient(1200px 800px at 10% -10%, #18202c 0%, transparent 60%),
@@ -48,8 +48,8 @@
 /* 顶部标题 + 年份轴 */
 .timeline-film-header{
   position:absolute;
-  left:0; right:0; top:0;
-  z-index:5;
+  left:0; right:0; top: 52px;
+  z-index:1050;
   padding:18px 32px 14px 32px;
   backdrop-filter:blur(6px);
   background:linear-gradient(180deg, rgba(12,14,18,.9), rgba(12,14,18,.45), transparent);

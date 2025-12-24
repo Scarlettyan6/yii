@@ -12,7 +12,6 @@ use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
@@ -89,7 +88,7 @@ $frontendHomeUrl = $frontendBaseUrl . '/index.php';
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container" style="padding-top: 90px;">
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

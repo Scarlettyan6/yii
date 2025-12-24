@@ -51,8 +51,7 @@ $backendLoginUrl = $backendBaseUrl . '/index.php?r=site/login';
         'brandLabel' => '抗战80周年纪念', // 网站标题
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            // 'class' => 'navbar-inverse navbar-fixed-top', // 这是 Bootstrap 3 的深色固定顶部
-            'class' => 'navbar navbar-inverse', // 使用 'navbar-inverse' 配合深色
+            'class' => 'navbar navbar-inverse navbar-fixed-top', // 添加 navbar-fixed-top 让导航栏固定在顶部
             'style' => 'background-color: #C00; border-color: #FFD700; border-bottom: 3px solid #FFD700;', // 你的自定义样式
         ],
     ]);
@@ -86,7 +85,7 @@ $backendLoginUrl = $backendBaseUrl . '/index.php?r=site/login';
 </header>
 
 <!-- 'flex-shrink-0' 是 BS5 的, 'wrap' 是 Yii 默认的 -->
-<main role="main" class="wrap"> 
+<main role="main" class="wrap" style="margin-top: 52px;"> 
     <div class="container">
         <?php
         $route = Yii::$app->controller->route;

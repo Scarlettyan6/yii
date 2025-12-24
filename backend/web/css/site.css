@@ -11,7 +11,7 @@ body {
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 20px 15px 20px;
 }
 
 .footer {
@@ -118,4 +118,37 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+/* Slim navbar to match frontend look and reduce height */
+.navbar {
+    min-height: 44px;
+    margin-bottom: 12px;
+}
+
+.navbar-brand {
+    height: 44px;
+    padding: 12px 15px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.navbar-nav > li > a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 20px;
+}
+
+.navbar-toggle {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 8px 9px;
+}
+
+@media (max-width: 767px) {
+    .navbar-brand {
+        max-width: calc(100vw - 80px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }

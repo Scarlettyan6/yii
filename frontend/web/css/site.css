@@ -118,3 +118,38 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+/* Fixed navbar - 为固定导航栏添加上边距已在布局文件中处理 */
+
+/* Slim navbar (避免全屏时遮挡内容标题) */
+.navbar {
+    min-height: 42px;
+    margin-bottom: 10px;
+}
+
+.navbar-brand {
+    height: 42px;
+    padding: 11px 15px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.navbar-nav > li > a {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    line-height: 20px;
+}
+
+.navbar-toggle {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 8px 9px;
+}
+
+@media (max-width: 767px) {
+    .navbar-brand {
+        max-width: calc(100vw - 80px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
